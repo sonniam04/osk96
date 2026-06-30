@@ -5,11 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>@yield('title', 'ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96) ยินดีต้อนรับทุกท่าน')</title>
 <link href="{{ asset('style.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/osk-new.css') }}" rel="stylesheet" type="text/css">
 <style type="text/css">
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #308EC4;
     font-family: "Microsoft Sans Serif", Tahoma, sans-serif;
     font-size: 14px;
 }
