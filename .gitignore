@@ -1,0 +1,26 @@
+# Laravel
+laravel/vendor/
+laravel/.env
+laravel/node_modules/
+laravel/public/hot
+laravel/public/storage
+laravel/storage/*.key
+laravel/bootstrap/cache/*.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Docker sensitive
+docker/php/
+
+# Temp
+*.log
+~$*
+
+src/
+src_download/

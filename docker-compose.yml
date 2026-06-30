@@ -1,0 +1,52 @@
+services:
+  web:
+    build: ./docker/php
+    container_name: osk96_web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - osk96-db
+
+  laravel:
+    build:
+      context: .
+      dockerfile: docker/php82/Dockerfile
+    container_name: osk96_laravel
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    volumes:
+      - ./laravel/app:/var/www/html/app
+      - ./laravel/resources:/var/www/html/resources
+      - ./laravel/routes:/var/www/html/routes
+      - ./laravel/config:/var/www/html/config
+      - ./laravel/.env:/var/www/html/.env
+      - laravel_storage:/var/www/html/storage
+      - laravel_cache:/var/www/html/bootstrap/cache
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+    depends_on:
+      - osk96-db
+
+  osk96-db:
+    image: mariadb:10.4
+    container_name: osk96_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: oskcomx_osk92com
+      MYSQL_USER: oskcomx_dbadm
+      MYSQL_PASSWORD: "1@mdb@dm1N"
+    ports:
+      - "3306:3306"
+    volumes:
+      - osk96_data:/var/lib/mysql
+
+volumes:
+  osk96_data:
+  laravel_storage:
+  laravel_cache:
