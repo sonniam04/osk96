@@ -17,13 +17,16 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
-        // Recent topics (all groups, for subject list)
+        // Recent topics (all groups, for subject list) — sort by question_date เหมือน original
         $recentTopics = DB::table('webboard_question')
-            ->join('webboard_group', 'webboard_question.group_id', '=', 'webboard_group.group_id')
+            ->join('webboard_group', function($join) {
+                $join->on('webboard_question.group_id', '=', 'webboard_group.group_id')
+                     ->on('webboard_question.old_group_id', '=', 'webboard_group.old_group_id');
+            })
             ->where('webboard_question.question_status', 1)
             ->where('webboard_group.isShow', 1)
-            ->orderByDesc('webboard_question.question_id')
-            ->limit(10)
+            ->orderByDesc('webboard_question.question_date')
+            ->limit(20)
             ->select('webboard_question.*', 'webboard_group.group_name')
             ->get();
 

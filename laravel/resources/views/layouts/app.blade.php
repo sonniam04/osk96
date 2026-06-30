@@ -18,7 +18,7 @@ body {
 </head>
 
 <body>
-<table cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" align="center">
+<table width="960" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" align="center" background="{{ asset('images/bg.jpg') }}">
   <tr>
     <td align="center" valign="top">
       <table cellspacing="0" cellpadding="0">
@@ -50,8 +50,10 @@ body {
                   @yield('content')
                 </td>
 
-                {{-- Right sidebar (empty space / background) --}}
-                <td width="40" valign="top" background="{{ asset('images/bp.png') }}">&nbsp;</td>
+                {{-- Right sidebar --}}
+                <td width="197" align="right" valign="top">
+                  @include('partials.right-sidebar')
+                </td>
               </tr>
             </table>
           </td>

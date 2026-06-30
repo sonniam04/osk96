@@ -21,7 +21,7 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
         <tr>
           <td>
             <img src="{{ asset('images/table-body_011.jpg') }}" width="530" height="27">
-            <a href="{{ route('webboard.index', ['group_id' => 1]) }}" title="ดูทั้งหมด">
+            <a href="{{ route('webboard.index') }}?group_id=1" title="คลิกเพื่อแสดงกระทู้ทั้งหมด">
               <img src="{{ asset('images/tool_bar2_02.jpg') }}" width="64" height="27" border="0">
             </a>
           </td>
@@ -37,6 +37,7 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
                   <table width="100%" cellspacing="0" cellpadding="0">
                     @forelse($latestPosts as $post)
                     <tr>
+                      {{-- Thumbnail column --}}
                       <td width="23%">
                         <table width="100%" cellspacing="0" cellpadding="0">
                           <tr>
@@ -62,23 +63,41 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
                             </td>
                           </tr>
                           <tr>
-                            <td><img src="{{ asset('images/table-box_05.jpg') }}" width="129" height="8"></td>
+                            <td><img src="{{ asset('images/table-box_05.jpg') }}" width="129" height="18"></td>
                           </tr>
                         </table>
                       </td>
-                      <td valign="top" style="padding:4px; font-size:13px;">
-                        <a href="{{ route('webboard.index') }}?question_id={{ $post->question_id }}" target="_blank" class="webboard">
-                          {{ Str::limit($post->question_title, 60) }}
-                        </a>
-                        @if(\Carbon\Carbon::parse($post->question_date)->diffInDays(now()) <= 7)
-                          <img src="{{ asset('images/board_news.gif') }}" border="0">
-                        @endif
-                        <br>
-                        <span style="font-size:11px; color:#666;">
-                          {{ \Carbon\Carbon::parse($post->question_date)->locale('th')->isoFormat('D MMM YY') }}
-                          &nbsp;|&nbsp; ตอบ {{ $post->question_post ?? 0 }}
-                          &nbsp;|&nbsp; ดู {{ $post->question_view ?? 0 }}
-                        </span>
+
+                      {{-- Card content column (Image12 border) --}}
+                      <td width="77%" align="left" valign="top">
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td width="18" height="128" align="left">
+                              <img src="{{ asset('images/Image12_01.jpg') }}" width="18" height="128">
+                            </td>
+                            <td>
+                              <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td><img src="{{ asset('images/Image12_02.jpg') }}" width="400" height="11"></td>
+                                </tr>
+                                <tr>
+                                  <td width="440" height="107" background="{{ asset('images/Image12_04.jpg') }}" valign="top" style="padding:4px;">
+                                    <a href="{{ route('webboard.index') }}?question_id={{ $post->question_id }}" target="_blank" class="webboard">
+                                      {{ $post->question_title }}
+                                    </a><br>
+                                    {{ mb_substr(strip_tags($post->question_detail ?? ''), 0, 200) }}...
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td><img src="{{ asset('images/Image12_05.jpg') }}" width="400" height="10"></td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td width="18" align="right">
+                              <img src="{{ asset('images/Image12_03.jpg') }}" width="18" height="128">
+                            </td>
+                          </tr>
+                        </table>
                       </td>
                     </tr>
                     @empty
@@ -86,9 +105,15 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
                     @endforelse
                   </table>
                 </td>
+                <td align="right" background="{{ asset('images/table-body_04.jpg') }}">
+                  <img src="{{ asset('images/table-body_04.jpg') }}" width="5" height="132">
+                </td>
               </tr>
             </table>
           </td>
+        </tr>
+        <tr>
+          <td><img src="{{ asset('images/table-body_05.jpg') }}" width="594" height="6"></td>
         </tr>
       </table>
     </td>
@@ -101,7 +126,7 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
         <tr>
           <td>
             <img src="{{ asset('images/tool_bar2_01.jpg') }}" width="530" height="27">
-            <a href="{{ route('webboard.index') }}" title="ดูทั้งหมด">
+            <a href="{{ route('webboard.index') }}" title="คลิกเพื่อแสดงกระทู้ทั้งหมด">
               <img src="{{ asset('images/tool_bar2_02.jpg') }}" width="64" height="27" border="0">
             </a>
           </td>
@@ -115,33 +140,31 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
                 </td>
                 <td width="584" valign="top">
                   <table width="100%" cellspacing="0" cellpadding="0">
-                    <tr align="center" style="font-weight:bold; font-size:12px; background:#eef;">
-                      <td width="55%">หัวข้อ</td>
+                    <tr align="center" style="font-weight:bold;">
+                      <td width="63%">หัวข้อ</td>
+                      <td width="8%">&nbsp;</td>
                       <td width="15%">หมวด</td>
-                      <td width="10%">ตอบ</td>
-                      <td width="10%">ดู</td>
-                      <td width="10%">วันที่</td>
+                      <td width="14%">วันเดือนปี</td>
                     </tr>
                     @forelse($recentTopics as $topic)
-                    <tr style="font-size:12px; border-bottom:1px solid #eee;">
-                      <td style="padding:3px 5px;">
-                        <a href="{{ route('webboard.index') }}?question_id={{ $topic->question_id }}"
-                           class="webboard" target="_blank">
-                          {{ Str::limit($topic->question_title, 50) }}
+                    <tr align="left">
+                      <td style="padding:2px 4px;">
+                        <a href="{{ route('webboard.index') }}?question_id={{ $topic->question_id }}" target="_blank" class="webboard">
+                          {{ mb_substr($topic->question_title, 0, 58) }}...
                         </a>
-                        @if(\Carbon\Carbon::parse($topic->question_date)->diffInDays(now()) <= 7)
-                          <img src="{{ asset('images/board_news.gif') }}" border="0">
-                        @endif
                       </td>
-                      <td align="center">{{ $topic->group_name }}</td>
-                      <td align="center">{{ $topic->question_post ?? 0 }}</td>
-                      <td align="center">{{ $topic->question_view ?? 0 }}</td>
-                      <td align="center">
-                        {{ \Carbon\Carbon::parse($topic->question_date)->format('d/m/y') }}
+                      <td>&nbsp;</td>
+                      <td align="center" style="font-size:11px;">{{ $topic->group_name }}</td>
+                      <td align="center" style="font-size:11px;">
+                        @php
+                          $d = \Carbon\Carbon::parse($topic->question_date);
+                          $mm = ['','ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+                          echo $d->format('d').' '.$mm[(int)$d->format('m')].' '.substr($d->year+543,2);
+                        @endphp
                       </td>
                     </tr>
                     @empty
-                    <tr><td colspan="5" align="center" style="padding:10px; color:#666;">ยังไม่มีโพสต์</td></tr>
+                    <tr><td colspan="4" align="center" style="padding:10px; color:#666;">ยังไม่มีโพสต์</td></tr>
                     @endforelse
                   </table>
                 </td>
@@ -171,7 +194,7 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
                 <td align="center" valign="top" width="25%">
                   <img src="{{ asset('images/0skkk2.jpg') }}" width="120" height="90" border="0">
                   <br>
-                  <span style="font-size:11px;">{{ Str::limit($act->a_name, 30) }}</span>
+                  <span style="font-size:11px;">{{ mb_substr($act->a_name, 0, 30) }}</span>
                 </td>
                 @empty
                 <td align="center" colspan="4" style="padding:20px; color:#666;">ยังไม่มีกิจกรรม</td>
