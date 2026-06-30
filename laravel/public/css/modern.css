@@ -1,0 +1,106 @@
+/* ===== Modern Enhancement — NO color/layout changes ===== */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+
+/* Font only */
+body, td, th, input, select, textarea {
+  font-family: 'Sarabun', 'Microsoft Sans Serif', Tahoma, sans-serif !important;
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Main wrapper shadow */
+table[width="960"] {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+
+/* ===== BLOG CARDS ===== */
+/* Card content area — radius + shadow only, no color */
+td[background*="Image12_04"] {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 10px 14px !important;
+}
+td[background*="Image12_04"] a {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+/* Hide decorative corner images (replaced visually by border-radius) */
+img[src*="Image12_01"],
+img[src*="Image12_02"],
+img[src*="Image12_03"],
+img[src*="Image12_05"] {
+  display: none;
+}
+
+/* ===== SECTION HEADER IMAGES ===== */
+img[src*="table-body_011"],
+img[src*="tool_bar2_01"],
+img[src*="tool_bar3_01"],
+img[src*="tool_bar2_02"],
+img[src*="tool_bar3_02"] {
+  border-radius: 4px;
+}
+a img[src*="tool_bar"] {
+  transition: filter 0.18s ease;
+}
+a:hover img[src*="tool_bar"] {
+  filter: brightness(1.1);
+}
+
+/* ===== SUBJECT TABLE ===== */
+td[width="584"] table tr[align="left"] {
+  transition: background 0.15s;
+}
+td[width="584"] table tr[align="left"]:hover {
+  background: rgba(255,255,255,0.55);
+}
+td[width="584"] table tr[align="left"] td {
+  padding: 5px 8px;
+}
+
+/* ===== LINKS ===== */
+a { transition: opacity 0.15s; }
+a:hover { opacity: 0.82; }
+
+/* Sidebar image links */
+a img[name^="img"] {
+  transition: transform 0.15s ease;
+}
+a:hover img[name^="img"] {
+  transform: translateX(2px);
+}
+
+/* ===== DROPDOWN ===== */
+select {
+  border-radius: 5px;
+  padding: 3px 6px;
+  font-size: 12px;
+  outline: none;
+  transition: box-shadow 0.18s;
+}
+select:focus {
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.12);
+}
+
+/* ===== FORM INPUTS ===== */
+input[type="text"],
+input[type="password"] {
+  border-radius: 4px;
+  padding: 3px 6px;
+  transition: box-shadow 0.18s;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.12);
+}
+input[type="submit"] {
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+input[type="submit"]:hover {
+  filter: brightness(1.08);
+}

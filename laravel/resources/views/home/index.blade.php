@@ -20,10 +20,7 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
       <table width="594" cellspacing="0" cellpadding="0">
         <tr>
           <td>
-            <img src="{{ asset('images/table-body_011.jpg') }}" width="530" height="27">
-            <a href="{{ route('webboard.index') }}?group_id=1" title="คลิกเพื่อแสดงกระทู้ทั้งหมด">
-              <img src="{{ asset('images/tool_bar2_02.jpg') }}" width="64" height="27" border="0">
-            </a>
+            <img src="{{ asset('images/table-body_011.jpg') }}" width="530" height="27"><a href="{{ route('webboard.index') }}?group_id=1" title="คลิกเพื่อแสดงกระทู้ทั้งหมด"><img src="{{ asset('images/tool_bar2_02.jpg') }}" width="64" height="27" border="0"></a>
           </td>
         </tr>
         <tr>
@@ -125,10 +122,7 @@ function MM_swapImage(){var i,j=0,x,a=MM_swapImage.arguments;document.MM_sr=new 
       <table width="594" cellspacing="0" cellpadding="0">
         <tr>
           <td>
-            <img src="{{ asset('images/tool_bar2_01.jpg') }}" width="530" height="27">
-            <a href="{{ route('webboard.index') }}" title="คลิกเพื่อแสดงกระทู้ทั้งหมด">
-              <img src="{{ asset('images/tool_bar2_02.jpg') }}" width="64" height="27" border="0">
-            </a>
+            <img src="{{ asset('images/tool_bar2_01.jpg') }}" width="530" height="27"><a href="{{ route('webboard.index') }}" title="คลิกเพื่อแสดงกระทู้ทั้งหมด"><img src="{{ asset('images/tool_bar2_02.jpg') }}" width="64" height="27" border="0"></a>
           </td>
         </tr>
         <tr>

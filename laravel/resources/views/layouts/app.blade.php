@@ -6,6 +6,7 @@
 <title>@yield('title', 'ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96) ยินดีต้อนรับทุกท่าน')</title>
 <link href="{{ asset('style.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/osk-new.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/modern.css') }}" rel="stylesheet" type="text/css">
 <style type="text/css">
 body {
     font-family: "Microsoft Sans Serif", Tahoma, sans-serif;
