@@ -6,7 +6,7 @@
 {{-- ── Section: Latest Posts ── --}}
 <div class="card" style="overflow:hidden;">
   <div class="section-title">
-    <span>📰 ได้ข่าวว่า............</span>
+    <span>ได้ข่าวว่า............</span>
     <a href="{{ route('webboard.index') }}?group_id=1">อื่นๆ &rsaquo;&rsaquo;</a>
   </div>
   <div style="padding:16px; display:flex; flex-direction:column; gap:14px;">
@@ -38,7 +38,7 @@
 {{-- ── Section: Recent Topics ── --}}
 <div class="card" style="overflow:hidden;">
   <div class="section-title">
-    <span>💬 แงโยะอร่อยทุกเรื่อง</span>
+    <span>แงโยะอร่อยทุกเรื่อง</span>
     <a href="{{ route('webboard.index') }}">อื่นๆ &rsaquo;&rsaquo;</a>
   </div>
   <div style="overflow-x:auto;">
@@ -84,7 +84,7 @@
 @if($activities->count())
 <div class="card" style="overflow:hidden;">
   <div class="section-title">
-    <span>🎪 กิจกรรม</span>
+    <span>กิจกรรม</span>
   </div>
   <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:16px;">
     @foreach($activities as $act)

@@ -1,6 +1,6 @@
 {{-- รวมของเพื่อน --}}
 <div class="sidebar-section">
-  <div class="sidebar-header">👥 รวมของเพื่อน</div>
+  <div class="sidebar-header">รวมของเพื่อน</div>
   <div style="padding:12px;">
     <select name="search" style="width:100%; border:1px solid #E2E8F0; border-radius:8px;
       padding:7px 10px; font-size:12px; font-family:'Sarabun',sans-serif;
@@ -27,7 +27,7 @@
 
 {{-- เพื่อนพอง ของเพื่อน --}}
 <div class="sidebar-section">
-  <div class="sidebar-header">🤝 เพื่อนพอง ของเพื่อน</div>
+  <div class="sidebar-header">เพื่อนพอง ของเพื่อน</div>
   <div style="padding:12px; min-height:100px; font-size:13px; color:#94A3B8; text-align:center; padding-top:24px;">
     — ยังไม่มีรายการ —
   </div>
