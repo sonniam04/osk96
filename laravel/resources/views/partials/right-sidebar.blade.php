@@ -1,11 +1,11 @@
-{{-- รวมของเพื่อน --}}
+{{-- รวมของเพื่อน (ตาม original right_menu1.php) --}}
 <div class="sidebar-section">
   <div class="sidebar-header">รวมของเพื่อน</div>
-  <div style="padding:10px;">
+  <div style="padding:8px;">
     <select onchange="if(this.value) window.location='/members?type='+this.value"
             style="width:100%; border:1px solid #DCEEF8; border-radius:6px;
-              padding:6px 8px; font-size:12px; font-family:'Sarabun',sans-serif;
-              color:#003366; background:#fff; cursor:pointer;">
+                   padding:6px 8px; font-size:12px; font-family:'Sarabun',sans-serif;
+                   color:#003366; background:#fff; cursor:pointer;">
       <option value="">— ค้นหาเพื่อน —</option>
       <option value="16">มาจากทุกที่</option>
       <option value="1">ห้องเรียน ม.ต.1</option>
@@ -26,7 +26,7 @@
   </div>
 </div>
 
-{{-- เพื่อนพอง — รูปสมาชิกสุ่ม --}}
+{{-- เพื่อนพอง — รูปสมาชิกสุ่ม (ตาม original right_menu1.php marquee) --}}
 @php
   try {
     $randomMembers = \DB::table('data')
@@ -35,7 +35,7 @@
       ->whereNotNull('fname')
       ->inRandomOrder()
       ->limit(12)
-      ->select('name','surname','fname')
+      ->select('name', 'surname', 'fname')
       ->get();
   } catch(\Exception $e) {
     $randomMembers = collect();
@@ -45,25 +45,26 @@
 @if($randomMembers->count())
 <div class="sidebar-section">
   <div class="sidebar-header">เพื่อนพอง ของเพื่อน</div>
-  <div style="padding:8px; display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
+  <div style="padding:8px; display:grid; grid-template-columns:repeat(3,1fr); gap:5px;">
     @foreach($randomMembers as $m)
-    <a href="{{ route('members.search') }}?type=16"
-       style="text-decoration:none; text-align:center;" title="{{ $m->name }} {{ $m->surname }}">
+    <a href="/members?type=16" title="{{ $m->name }} {{ $m->surname }}"
+       style="text-decoration:none; text-align:center;">
       <img src="/uploads/member/{{ $m->fname }}"
-           style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px;
+           style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:4px;
                   border:1px solid #DCEEF8; display:block;"
            onerror="this.parentElement.style.display='none'"
            alt="{{ $m->name }}">
-      <div style="font-size:10px; color:#555; margin-top:3px; line-height:1.2;
-                  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+      <div style="font-size:10px; color:#555; margin-top:2px;
+                  overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
         {{ $m->name }}
       </div>
     </a>
     @endforeach
   </div>
-  <div style="padding:0 8px 8px; text-align:center;">
-    <a href="{{ route('members.search') }}?type=16"
-       style="font-size:11px; color:#308EC4; text-decoration:none;">ดูทั้งหมด &rsaquo;</a>
+  <div style="padding:0 8px 8px; text-align:right;">
+    <a href="/members?type=16" style="font-size:11px; color:#308EC4; text-decoration:none;">
+      ดูทั้งหมด &rsaquo;
+    </a>
   </div>
 </div>
 @endif
