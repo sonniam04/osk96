@@ -1,18 +1,17 @@
-{{-- รวมของเพื่อน (ตาม original right_menu1.php) --}}
+{{-- รวมของเพื่อน --}}
 <div class="sidebar-section">
   <div class="sidebar-header">รวมของเพื่อน</div>
-  <div style="padding:8px;">
-    <select onchange="if(this.value) window.location='/members?type='+this.value"
-            style="width:100%; border:1px solid #DCEEF8; border-radius:6px;
-                   padding:6px 8px; font-size:12px; font-family:'Sarabun',sans-serif;
-                   color:#003366; background:#fff; cursor:pointer;">
-      <option value="">— ค้นหาเพื่อน —</option>
+  <div style="padding:12px;">
+    <select name="search" style="width:100%; border:1px solid #E2E8F0; border-radius:8px;
+      padding:7px 10px; font-size:12px; font-family:'Sarabun',sans-serif;
+      background:#F8FAFC; color:#374151; outline:none; cursor:pointer;">
+      <option value=""> - ค้นหาเพื่อน- </option>
       <option value="16">มาจากทุกที่</option>
-      <option value="1">ห้องเรียน ม.ต.1</option>
-      <option value="2">ห้องเรียน ม.ต.2</option>
-      <option value="3">ห้องเรียน ม.ต.3</option>
-      <option value="4">ห้องเรียน ม.ต.4</option>
-      <option value="5">ห้องเรียน ม.ต.5</option>
+      <option value="1">มาจากห้องเรียนตอน ม.ต.1</option>
+      <option value="2">มาจากห้องเรียนตอน ม.ต.2</option>
+      <option value="3">มาจากห้องเรียนตอน ม.ต.3</option>
+      <option value="4">มาจากห้องเรียนตอน ม.ต.4</option>
+      <option value="5">มาจากห้องเรียนตอน ม.ต.5</option>
       <option value="6">ยกเลิกเรียน</option>
       <option value="7">เสียชีวิต</option>
       <option value="8">ไม่ทราบสถานที่</option>
@@ -26,45 +25,10 @@
   </div>
 </div>
 
-{{-- เพื่อนพอง — รูปสมาชิกสุ่ม (ตาม original right_menu1.php marquee) --}}
-@php
-  try {
-    $randomMembers = \DB::table('data')
-      ->where('st', 1)
-      ->whereRaw("TRIM(fname) != ''")
-      ->whereNotNull('fname')
-      ->inRandomOrder()
-      ->limit(12)
-      ->select('name', 'surname', 'fname')
-      ->get();
-  } catch(\Exception $e) {
-    $randomMembers = collect();
-  }
-@endphp
-
-@if($randomMembers->count())
+{{-- เพื่อนพอง ของเพื่อน --}}
 <div class="sidebar-section">
   <div class="sidebar-header">เพื่อนพอง ของเพื่อน</div>
-  <div style="padding:8px; display:grid; grid-template-columns:repeat(3,1fr); gap:5px;">
-    @foreach($randomMembers as $m)
-    <a href="/members?type=16" title="{{ $m->name }} {{ $m->surname }}"
-       style="text-decoration:none; text-align:center;">
-      <img src="/uploads/member/{{ $m->fname }}"
-           style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:4px;
-                  border:1px solid #DCEEF8; display:block;"
-           onerror="this.parentElement.style.display='none'"
-           alt="{{ $m->name }}">
-      <div style="font-size:10px; color:#555; margin-top:2px;
-                  overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
-        {{ $m->name }}
-      </div>
-    </a>
-    @endforeach
-  </div>
-  <div style="padding:0 8px 8px; text-align:right;">
-    <a href="/members?type=16" style="font-size:11px; color:#308EC4; text-decoration:none;">
-      ดูทั้งหมด &rsaquo;
-    </a>
+  <div style="padding:12px; min-height:100px; font-size:13px; color:#94A3B8; text-align:center; padding-top:24px;">
+    — ยังไม่มีรายการ —
   </div>
 </div>
-@endif
