@@ -44,20 +44,20 @@
   <div style="overflow-x:auto;">
     <table style="width:100%; border-collapse:collapse; font-size:13px;">
       <thead>
-        <tr style="background:#F8FAFC; border-bottom:2px solid #E2E8F0;">
-          <th style="padding:10px 14px; text-align:left; color:#374151; font-weight:700;">หัวข้อ</th>
-          <th style="padding:10px 14px; text-align:center; color:#374151; font-weight:700; white-space:nowrap;">หมวด</th>
-          <th style="padding:10px 14px; text-align:center; color:#374151; font-weight:700; white-space:nowrap;">วันเดือนปี</th>
+        <tr style="background:#EBF4FB; border-bottom:2px solid #308EC4;">
+          <th style="padding:10px 14px; text-align:left; color:#003366; font-weight:700;">หัวข้อ</th>
+          <th style="padding:10px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">หมวด</th>
+          <th style="padding:10px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">วันเดือนปี</th>
         </tr>
       </thead>
       <tbody>
         @forelse($recentTopics as $topic)
         <tr style="border-bottom:1px solid #F1F5F9; transition:background .15s;"
-            onmouseover="this.style.background='#EFF6FF'" onmouseout="this.style.background=''">
+            onmouseover="this.style.background='#EBF4FB'" onmouseout="this.style.background=''">
           <td style="padding:9px 14px;">
             <a href="{{ route('webboard.index') }}?question_id={{ $topic->question_id }}"
                target="_blank"
-               style="color:#1E40AF; text-decoration:none; font-weight:500; line-height:1.4; display:block;">
+               style="color:#003366; text-decoration:none; font-weight:500; line-height:1.4; display:block;">
               {{ mb_substr($topic->question_title, 0, 60) }}...
             </a>
           </td>

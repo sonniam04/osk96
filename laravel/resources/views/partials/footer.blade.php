@@ -1,4 +1,4 @@
-<footer style="background:linear-gradient(135deg,#1E3A5F,#2563EB); color:#fff; margin-top:8px; padding:24px 16px; text-align:center; font-size:13px; line-height:1.8;">
+<footer style="background:linear-gradient(135deg,#003366,#308EC4); color:#fff; margin-top:8px; padding:24px 16px; text-align:center; font-size:13px; line-height:1.8;">
   <div style="max-width:1160px; margin:0 auto;">
     <p style="font-weight:600; font-size:15px; margin-bottom:4px;">
       ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)

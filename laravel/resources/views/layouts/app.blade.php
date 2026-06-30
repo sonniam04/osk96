@@ -22,47 +22,83 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="{{ asset('style.css') }}" rel="stylesheet">
 <style>
-  body { background: #F1F5F9; font-family: 'Sarabun', sans-serif; }
-  .card { background:#fff; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
+  /* ── Original color palette ── */
+  :root {
+    --osk-blue:   #308EC4;
+    --osk-blue2:  #4169E1;
+    --osk-dark:   #003366;
+    --osk-orange: #FF6600;
+    --osk-pink-bg:#F9EEF5;
+  }
+
+  body {
+    background: url('{{ asset('images/bg.jpg') }}') repeat-x fixed;
+    background-color: #308EC4;
+    font-family: 'Sarabun', sans-serif;
+  }
+
+  /* main wrapper */
+  table[width="960"], div[style*="max-width:1160px"] {
+    /* handled inline */
+  }
+
+  .card {
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 2px 16px rgba(0,100,180,.10);
+  }
+
+  /* section gradient = OSK blue */
   .section-title {
     display:flex; align-items:center; justify-content:space-between;
     padding:10px 16px; border-radius:10px 10px 0 0;
-    background:linear-gradient(135deg,#3B82F6,#6366F1);
+    background:linear-gradient(135deg, #308EC4, #4169E1);
     color:#fff; font-weight:700; font-size:15px;
   }
   .section-title a { color:#fff; font-size:13px; font-weight:500; opacity:.85; }
   .section-title a:hover { opacity:1; }
-  .sidebar-section { background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.06); overflow:hidden; }
+
+  /* sidebar sections */
+  .sidebar-section {
+    background:#fff; border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,80,160,.08); overflow:hidden;
+  }
   .sidebar-header {
-    background:linear-gradient(135deg,#3B82F6,#6366F1);
+    background:linear-gradient(135deg, #308EC4, #4169E1);
     color:#fff; font-weight:700; font-size:14px;
     padding:8px 14px; letter-spacing:.3px;
   }
+
+  /* menu items */
   .menu-item {
     display:flex; align-items:center; gap:8px;
-    padding:9px 16px; font-size:14px; color:#374151;
-    border-bottom:1px solid #F1F5F9;
+    padding:9px 16px; font-size:14px; color:#003366;
+    border-bottom:1px solid #EBF4FB;
     transition:background .15s, color .15s, padding-left .15s;
     text-decoration:none; font-weight:500;
   }
-  .menu-item:hover { background:#EFF6FF; color:#3B82F6; padding-left:20px; }
-  .menu-item .dot { width:7px; height:7px; background:#3B82F6; border-radius:50%; flex-shrink:0; }
+  .menu-item:hover { background:#EBF4FB; color:#308EC4; padding-left:20px; }
+  .menu-item .dot { width:7px; height:7px; background:#FF6600; border-radius:50%; flex-shrink:0; }
+
+  /* news cards */
   .news-card {
     display:flex; gap:14px; padding:14px; border-radius:12px;
-    border:1px solid #E2E8F0; background:#fff;
-    transition:box-shadow .2s, transform .2s;
-    text-decoration:none;
+    border:1px solid #C8E6F5; background:#FAFEFF;
+    transition:box-shadow .2s, transform .2s; text-decoration:none;
   }
-  .news-card:hover { box-shadow:0 8px 24px rgba(59,130,246,.15); transform:translateY(-2px); }
+  .news-card:hover { box-shadow:0 8px 24px rgba(48,142,196,.18); transform:translateY(-2px); }
   .news-thumb {
     width:110px; height:88px; object-fit:cover; border-radius:8px;
-    flex-shrink:0; background:#EFF6FF;
+    flex-shrink:0; background:#EBF4FB;
   }
-  .news-title { font-size:15px; font-weight:700; color:#1E40AF; line-height:1.45; }
-  .news-title:hover { color:#2563EB; }
-  .news-excerpt { font-size:13px; color:#64748B; line-height:1.6; margin-top:5px; }
-  .tag { display:inline-block; font-size:11px; padding:2px 8px; border-radius:99px;
-         background:#EFF6FF; color:#3B82F6; font-weight:600; }
+  .news-title { font-size:15px; font-weight:700; color:#003366; line-height:1.45; }
+  .news-title:hover { color:#308EC4; }
+  .news-excerpt { font-size:13px; color:#555; line-height:1.6; margin-top:5px; }
+
+  .tag {
+    display:inline-block; font-size:11px; padding:2px 9px; border-radius:99px;
+    background:#EBF4FB; color:#308EC4; font-weight:600;
+  }
 </style>
 @stack('scripts-head')
 </head>
@@ -76,10 +112,11 @@
 
   {{-- Sub-header strip --}}
   <div style="max-width:1160px; margin:0 auto;">
-    <div class="flex items-center justify-between px-4 py-1 text-xs text-gray-500"
-         style="background:linear-gradient(90deg,#E0F2FE,#F0F9FF);">
-      <span class="italic">You won't be alone</span>
-      <span class="font-semibold tracking-widest text-blue-400">WWW.OSK96.COM</span>
+    <div style="display:flex; align-items:center; justify-content:space-between;
+                padding:3px 16px; font-size:12px;
+                background:linear-gradient(90deg,#308EC4,#4169E1); color:#fff;">
+      <span style="font-style:italic; opacity:.85;">You won't be alone</span>
+      <span style="font-weight:700; letter-spacing:2px;">WWW.OSK96.COM</span>
     </div>
   </div>
 
