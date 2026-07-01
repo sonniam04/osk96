@@ -28,6 +28,7 @@
     ['label'=>'ระเบียบการบริหารงาน',    'route'=>'about.manage'],
     ['label'=>'ระเบียบว่าด้วยเงิน',     'route'=>'about.money'],
     ['label'=>'รักรุ่นจริงไม่ทิ้งกัน', 'route'=>'donate'],
+    ['label'=>'บัญชีสถานะการเงิน',     'route'=>'bill.index'],
     ['label'=>'เพลงสวน',                'url'=>route('webboard.index').'?group_id=31&old_group_id=31'],
   ] as $item)
   @php $href = isset($item['url']) ? $item['url'] : route($item['route']); @endphp

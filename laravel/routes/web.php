@@ -32,7 +32,7 @@ Route::get('/admin/dashboard', fn() => 'Admin Dashboard (Coming Soon)')->name('a
 Route::get('/webboard', [WebboardController::class, 'index'])->name('webboard.index');
 Route::get('/guestbook', fn() => abort(404))->name('guestbook.index');
 Route::get('/download', fn() => abort(404))->name('download.index');
-Route::get('/bill', fn() => abort(404))->name('bill.index');
+Route::get('/bill', [AboutController::class, 'bill'])->name('bill.index');
 Route::get('/message', fn() => abort(404))->name('message.index');
 Route::get('/contact', fn() => abort(404))->name('contact.index');
 Route::get('/contact/webmaster', fn() => abort(404))->name('contact.webmaster');
