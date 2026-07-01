@@ -86,8 +86,7 @@
             {{ sprintf('%07d', $post->question_id) }}
           </td>
           <td style="padding:3px 14px;">
-            <a href="{{ env('OSK_LEGACY_URL') }}/webboard_view.php?question_id={{ $post->question_id }}"
-               target="_blank"
+            <a href="{{ route('webboard.view', $post->question_id) }}"
                style="color:#003366; text-decoration:none; font-weight:500; line-height:1.4;">
               {{ mb_substr($post->question_title, 0, 60) }}
             </a>

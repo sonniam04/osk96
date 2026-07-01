@@ -36,6 +36,8 @@ Route::get('/admin/dashboard', fn() => 'Admin Dashboard (Coming Soon)')->name('a
 
 // Placeholder routes (จะทำ feature เพิ่มทีละ module)
 Route::get('/webboard', [WebboardController::class, 'index'])->name('webboard.index');
+Route::get('/webboard/{id}', [WebboardController::class, 'view'])->name('webboard.view')->where('id', '[0-9]+');
+Route::post('/webboard/{id}/reply', [WebboardController::class, 'reply'])->name('webboard.reply')->where('id', '[0-9]+');
 Route::get('/guestbook',  [GuestbookController::class, 'index'])->name('guestbook.index');
 Route::post('/guestbook', [GuestbookController::class, 'store'])->name('guestbook.store');
 Route::get('/download', fn() => abort(404))->name('download.index');

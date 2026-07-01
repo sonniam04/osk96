@@ -62,4 +62,72 @@ class WebboardController extends Controller
 
         return view('webboard.index', compact('posts', 'groupId', 'oldGroupId', 'groupName', 'search'));
     }
+
+    public function view(Request $request, int $id)
+    {
+        $question = DB::table('webboard_question')
+            ->where('question_id', $id)
+            ->where('question_status', 1)
+            ->first();
+
+        if (!$question) abort(404);
+
+        // increment view count
+        DB::table('webboard_question')
+            ->where('question_id', $id)
+            ->increment('question_view');
+
+        $answers = DB::table('webboard_ans')
+            ->where('question_id', $id)
+            ->where('ans_status', 1)
+            ->orderBy('ans_date')
+            ->get();
+
+        // ดึง extra files ของแต่ละคำตอบที่ไม่มี ans_file
+        $answerFiles = DB::table('add_ans_files')
+            ->whereIn('ans_id', $answers->pluck('ans_id'))
+            ->get()
+            ->groupBy('ans_id');
+
+        return view('webboard.view', compact('question', 'answers', 'answerFiles'));
+    }
+
+    public function reply(Request $request, int $id)
+    {
+        $user = session('user');
+        if (!$user) return redirect()->route('login');
+
+        $request->validate([
+            'post_detail' => 'required|string',
+            'post_file'   => 'nullable|image|mimes:jpg,jpeg,gif|max:500',
+        ]);
+
+        $imgsn = '';
+        if ($request->hasFile('post_file')) {
+            $file = $request->file('post_file');
+            $ext  = strtolower($file->getClientOriginalExtension());
+            $imgsn = 'webboard_' . now()->format('YmdHis') . '.' . $ext;
+            $file->move(public_path('uploads'), $imgsn);
+        }
+
+        DB::table('webboard_ans')->insert([
+            'question_id' => $id,
+            'ans_detail'  => $request->input('post_detail'),
+            'ans_file'    => $imgsn,
+            'ans_name'    => $user['name'],
+            'ans_email'   => '',
+            'ans_date'    => now(),
+            'ans_ip'      => $request->ip(),
+            'ans_status'  => 1,
+        ]);
+
+        DB::table('webboard_question')
+            ->where('question_id', $id)
+            ->update([
+                'question_date_update' => now(),
+                'question_post'        => DB::raw('question_post + 1'),
+            ]);
+
+        return redirect()->route('webboard.view', $id)->with('replied', true);
+    }
 }

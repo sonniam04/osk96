@@ -45,9 +45,8 @@
     @endif
   </div>
   {{-- ชื่อ --}}
-  <div style="font-size:12px; color:#374151; margin-top:4px;">
-    <span style="color:#CC00CC; font-weight:600;">คุณ</span>
-    {{ $sidebarUser['name'] ?? '' }}
+  <div style="font-size:12px; color:#1a1a1a; font-weight:600; margin-top:4px;">
+    คุณ {{ $sidebarUser['name'] ?? '' }}
   </div>
   {{-- ปุ่ม --}}
   <div style="margin-top:8px; display:flex; gap:5px; justify-content:center;">

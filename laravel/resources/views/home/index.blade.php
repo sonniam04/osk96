@@ -11,8 +11,7 @@
   </div>
   <div style="padding:16px; display:flex; flex-direction:column; gap:14px;">
     @forelse($latestPosts as $post)
-    <a href="{{ route('webboard.index') }}?question_id={{ $post->question_id }}"
-       target="_blank" class="news-card">
+    <a href="{{ route('webboard.view', $post->question_id) }}" class="news-card">
       @if(!empty($post->question_file))
         <img src="{{ env('OSK_LEGACY_URL') }}/uploads/{{ $post->question_file }}" class="news-thumb" alt="">
       @else
@@ -60,14 +59,16 @@
         <tr style="border-bottom:1px solid #F1F5F9; transition:background .15s;"
             onmouseover="this.style.background='#EBF4FB'" onmouseout="this.style.background=''">
           <td style="padding:4px 14px;">
-            <a href="{{ route('webboard.index') }}?question_id={{ $topic->question_id }}"
-               target="_blank"
+            <a href="{{ route('webboard.view', $topic->question_id) }}"
                style="color:#003366; text-decoration:none; font-weight:500; line-height:1.3; display:block;">
               {{ mb_substr($topic->question_title, 0, 60) }}...
             </a>
           </td>
           <td style="padding:4px 14px; text-align:center;">
-            <span class="tag">{{ $topic->group_name }}</span>
+            <a href="{{ route('webboard.index') }}?group_id={{ $topic->group_id }}&old_group_id={{ $topic->old_group_id }}"
+               style="text-decoration:none;">
+              <span class="tag">{{ mb_substr($topic->group_name, 0, 11) }}</span>
+            </a>
           </td>
           <td style="padding:4px 14px; text-align:center; color:#64748B; white-space:nowrap;">
             @php
