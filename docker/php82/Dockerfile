@@ -3,7 +3,9 @@ FROM php:8.4-cli
 RUN apt-get update && apt-get install -y \
     libzip-dev zip unzip libpng-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl bcmath gd opcache \
-    && rm -rf /var/lib/apt/lists/*
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && rm -rf /var/lib/apt/lists/* /tmp/pear
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -15,7 +17,14 @@ RUN echo "date.timezone = Asia/Bangkok" >> /usr/local/etc/php/php.ini \
  && echo "opcache.memory_consumption=256" >> /usr/local/etc/php/php.ini \
  && echo "opcache.max_accelerated_files=20000" >> /usr/local/etc/php/php.ini \
  && echo "opcache.validate_timestamps=1" >> /usr/local/etc/php/php.ini \
- && echo "opcache.revalidate_freq=0" >> /usr/local/etc/php/php.ini
+ && echo "opcache.revalidate_freq=60" >> /usr/local/etc/php/php.ini \
+ && echo "opcache.interned_strings_buffer=16" >> /usr/local/etc/php/php.ini \
+ && echo "opcache.fast_shutdown=1" >> /usr/local/etc/php/php.ini \
+ && echo "expose_php=Off" >> /usr/local/etc/php/php.ini \
+ && echo "session.cookie_httponly=1" >> /usr/local/etc/php/php.ini \
+ && echo "session.cookie_samesite=Lax" >> /usr/local/etc/php/php.ini \
+ && echo "display_errors=Off" >> /usr/local/etc/php/php.ini \
+ && echo "log_errors=On" >> /usr/local/etc/php/php.ini
 
 WORKDIR /var/www/html
 

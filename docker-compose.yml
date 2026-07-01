@@ -28,9 +28,18 @@ services:
       - laravel_cache:/var/www/html/bootstrap/cache
     environment:
       APP_ENV: local
-      APP_DEBUG: "true"
+      APP_DEBUG: "false"
     depends_on:
       - osk96-db
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    container_name: osk96_redis
+    restart: unless-stopped
+    command: redis-server --maxmemory 128mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
 
   osk96-db:
     image: mariadb:10.4
@@ -50,3 +59,4 @@ volumes:
   osk96_data:
   laravel_storage:
   laravel_cache:
+  redis_data:
