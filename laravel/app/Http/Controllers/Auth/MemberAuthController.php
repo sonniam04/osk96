@@ -38,12 +38,15 @@ class MemberAuthController extends Controller
         }
 
         session([
-            'user'     => $username,
-            'user_id'  => $member->autono ?? null,
-            'user_name' => ($member->name ?? '') . ' ' . ($member->surname ?? ''),
+            'user' => [
+                'username' => $username,
+                'autono'   => $member->autono ?? null,
+                'name'     => ($member->name ?? '') . ' ' . ($member->surname ?? ''),
+                'fname'    => $member->fname ?? '',
+            ],
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('profile');
     }
 
     public function logout()

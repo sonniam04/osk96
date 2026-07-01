@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\WebboardController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\GuestbookController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -19,6 +20,8 @@ Route::get('/about/finance',       [AboutController::class, 'money'])->name('abo
 Route::get('/donate',              [AboutController::class, 'donate'])->name('donate');
 
 // Member Auth
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
 Route::get('/login', [MemberAuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [MemberAuthController::class, 'login'])->name('login.post');
 Route::get('/logout', [MemberAuthController::class, 'logout'])->name('logout');
