@@ -26,7 +26,7 @@
     </div>
     @endif
 
-    <form method="POST" action="{{ route('guestbook.store') }}">
+    <form method="POST" action="{{ route('guestbook.store') }}" enctype="multipart/form-data">
       @csrf
       <table style="width:100%; border-collapse:collapse; font-size:13px;">
         <tr style="background:#EBF4FB;">
@@ -100,6 +100,14 @@
           </td>
         </tr>
         <tr style="background:#EBF4FB;">
+          <td style="padding:8px 14px; font-weight:600; color:#003366;">รูป Banner</td>
+          <td style="padding:8px 14px;">
+            <input type="file" name="image" accept="image/*"
+                   style="font-size:13px; font-family:'Sarabun',sans-serif;">
+            <div style="font-size:11px; color:#94A3B8; margin-top:4px;">jpg, png ขนาดไม่เกิน 1MB</div>
+          </td>
+        </tr>
+        <tr>
           <td></td>
           <td style="padding:10px 14px;">
             <button type="submit"
@@ -138,7 +146,19 @@
           &nbsp;|&nbsp;<span style="color:#F59E0B;">{{ $stars }}</span>
         @endif
       </div>
-      <div style="font-size:13px; color:#374151; line-height:1.7; white-space:pre-wrap;">{{ $e->message }}</div>
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        @if(!empty($e->image))
+        @php
+          $imgSrc = file_exists(public_path('uploads/'.$e->image))
+            ? asset('uploads/'.$e->image)
+            : env('OSK_LEGACY_URL').'/uploads/'.$e->image;
+        @endphp
+        <img src="{{ $imgSrc }}" width="100"
+             style="flex-shrink:0; border:1px solid #DCEEF8; border-radius:4px;"
+             onerror="this.style.display='none'">
+        @endif
+        <div style="font-size:13px; color:#374151; line-height:1.7; white-space:pre-wrap;">{{ $e->message }}</div>
+      </div>
     </div>
     @empty
     <div style="padding:32px; text-align:center; color:#94A3B8;">ยังไม่มีรายการในสมุดเยี่ยม</div>

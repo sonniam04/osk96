@@ -22,7 +22,16 @@ class GuestbookController extends Controller
         $request->validate([
             'name'    => 'required|max:50',
             'message' => 'required',
+            'image'   => 'nullable|image|max:1024',
         ]);
+
+        $imageName = '';
+        if ($request->hasFile('image')) {
+            $ts   = now()->format('YmdHis');
+            $ext  = $request->file('image')->getClientOriginalExtension();
+            $imageName = $ts . '.' . $ext;
+            $request->file('image')->move(public_path('uploads'), $imageName);
+        }
 
         DB::table('guestbook')->insert([
             'name'       => strip_tags($request->name),
@@ -34,7 +43,7 @@ class GuestbookController extends Controller
             'ip'         => $request->ip(),
             'host'       => $request->ip(),
             'st'         => 1,
-            'image'      => '',
+            'image'      => $imageName,
             'submitdate' => now(),
         ]);
 
