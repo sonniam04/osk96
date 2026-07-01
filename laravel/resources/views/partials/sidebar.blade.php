@@ -73,28 +73,17 @@
 <div class="sidebar-section">
   <div class="sidebar-header">อยากร่วมอยากจอย</div>
   @foreach([
-    'ได้ข่าวว่า......','จดหมายเวียน','ทำบุญและบริจาคโลหิต',
-    'เพื่อนช่วยเพื่อน','ธุรกิจในเตอร์ข่าวสวน','ภาพเด็คลิปโดน',
-    'รวมภาพกิจกรรม','คุยกันตามประธาน'
-  ] as $item)
-  <a href="#" class="menu-item" style="font-size:13px;">
-    <span style="color:#3B82F6; font-size:11px;">●</span> {{ $item }}
-  </a>
-  @endforeach
-</div>
-
-{{-- ข่าวจากรุ่น 96 --}}
-<div class="sidebar-section">
-  <div class="sidebar-header">ข่าวจากรุ่น 96</div>
-  @foreach([
-    ['label'=>'ข่าวทางวิชาการจากรุ่น 96', 'g'=>7, 'o'=>17],
-    ['label'=>'คำคม, คติชาชีวิต',          'g'=>7, 'o'=>16],
-    ['label'=>'เรื่องของบุตรหลาน',         'g'=>7, 'o'=>26],
-    ['label'=>'เรื่องของเพื่อนพ้อง 96',    'g'=>7, 'o'=>20],
-    ['label'=>'เรื่องวันสำคัญ',            'g'=>7, 'o'=>18],
+    ['label'=>'ได้ข่าวว่า......',        'g'=>1,  'o'=>0],
+    ['label'=>'จดหมายเวียน',             'g'=>2,  'o'=>22],
+    ['label'=>'ทำบุญและบริจาคโลหิต',    'g'=>30, 'o'=>30],
+    ['label'=>'เพื่อนช่วยเพื่อน',       'g'=>5,  'o'=>24],
+    ['label'=>'ธุรกิจในเครือข่ายสวน',   'g'=>29, 'o'=>29],
+    ['label'=>'ภาพเด็คลิปโดน',          'g'=>6,  'o'=>0],
+    ['label'=>'คุยกับท่านประธาน',        'g'=>13, 'o'=>0],
+    ['label'=>'ติดต่อเว็บมาสเตอร์',     'g'=>14, 'o'=>0],
   ] as $item)
   @php
-    $wbHref   = route('webboard.index').'?group_id='.$item['g'].'&old_group_id='.$item['o'];
+    $wbHref = route('webboard.index').'?group_id='.$item['g'].'&old_group_id='.$item['o'];
     $wbActive = ($currentRoute === 'webboard.index'
                  && request()->get('group_id') == $item['g']
                  && request()->get('old_group_id') == $item['o'])
@@ -102,10 +91,35 @@
               : '';
   @endphp
   <a href="{{ $wbHref }}" class="menu-item" style="font-size:13px; {{ $wbActive }}">
-    <span class="dot"></span>{{ $item['label'] }}
+    <span style="color:#3B82F6; font-size:11px;">●</span> {{ $item['label'] }}
   </a>
   @endforeach
 </div>
+
+{{-- นานาสาระ --}}
+<div class="sidebar-section">
+  <div class="sidebar-header">นานาสาระ</div>
+  @foreach([
+    ['label'=>'ข่าวสารวิชาการ',      'g'=>7, 'o'=>17],
+    ['label'=>'คำคม/ปรัชญาชีวิต',   'g'=>7, 'o'=>16],
+    ['label'=>'ซุปซิป',              'g'=>7, 'o'=>26],
+    ['label'=>'ครอบครัวสวน (96)',    'g'=>7, 'o'=>20],
+    ['label'=>'สันทนาการ/บันเทิง',  'g'=>7, 'o'=>18],
+  ] as $item)
+  @php
+    $wbHref = route('webboard.index').'?group_id='.$item['g'].'&old_group_id='.$item['o'];
+    $wbActive = ($currentRoute === 'webboard.index'
+                 && request()->get('group_id') == $item['g']
+                 && request()->get('old_group_id') == $item['o'])
+              ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #308EC4;'
+              : '';
+  @endphp
+  <a href="{{ $wbHref }}" class="menu-item" style="font-size:13px; {{ $wbActive }}">
+    <span style="color:#3B82F6; font-size:11px;">●</span> {{ $item['label'] }}
+  </a>
+  @endforeach
+</div>
+
 
 {{-- ลิงค์ที่เกี่ยวข้อง --}}
 <div class="sidebar-section">
