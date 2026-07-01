@@ -45,15 +45,6 @@
         </tr>
         @endforeach
       </tbody>
-      <tfoot>
-        <tr style="background:#EBF4FB; font-weight:700;">
-          <td colspan="2" style="padding:8px 14px; color:#003366;">รวมทั้งหมด</td>
-          <td style="padding:8px 14px; text-align:right;">{{ number_format($summaries->sum('yodma'), 2) }}</td>
-          <td style="padding:8px 14px; text-align:right; color:#16A34A;">{{ number_format($summaries->sum('total_in'), 2) }}</td>
-          <td style="padding:8px 14px; text-align:right; color:#DC2626;">{{ number_format($summaries->sum('total_out'), 2) }}</td>
-          <td style="padding:8px 14px; text-align:right; color:#003366;">{{ number_format($summaries->sum('balance'), 2) }}</td>
-        </tr>
-      </tfoot>
     </table>
   </div>
 </div>

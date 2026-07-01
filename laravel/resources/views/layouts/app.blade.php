@@ -51,7 +51,7 @@
 
   .section-title {
     display:flex; align-items:center; justify-content:space-between;
-    padding: 10px 16px;
+    padding: 7px 14px;
     background: #308EC4;
     color: #fff;
     font-weight: 700;
@@ -75,7 +75,7 @@
     color: #003366;
     font-weight: 700;
     font-size: 13px;
-    padding: 9px 14px 7px;
+    padding: 6px 14px 5px;
     border-bottom: 2px solid #308EC4;
     letter-spacing: .2px;
   }
@@ -83,7 +83,7 @@
   /* menu items */
   .menu-item {
     display:flex; align-items:center; gap:8px;
-    padding:9px 16px; font-size:14px; color:#003366;
+    padding:5px 16px; font-size:13px; color:#003366;
     border-bottom:1px solid #EBF4FB;
     transition:background .15s, color .15s, padding-left .15s;
     text-decoration:none; font-weight:500;
@@ -135,21 +135,21 @@
   </div>
 
   {{-- Main 3-column grid --}}
-  <div style="max-width:1160px; margin:12px auto 24px; padding:0 8px;">
-    <div style="display:grid; grid-template-columns:220px 1fr 210px; gap:16px; align-items:start;">
+  <div style="max-width:1160px; margin:8px auto 16px; padding:0 8px;">
+    <div style="display:grid; grid-template-columns:220px 1fr 210px; gap:10px; align-items:start;">
 
       {{-- LEFT SIDEBAR --}}
-      <aside style="display:flex; flex-direction:column; gap:12px;">
+      <aside style="display:flex; flex-direction:column; gap:6px;">
         @include('partials.sidebar')
       </aside>
 
       {{-- CENTER CONTENT --}}
-      <main style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+      <main style="display:flex; flex-direction:column; gap:10px; min-width:0;">
         @yield('content')
       </main>
 
       {{-- RIGHT SIDEBAR --}}
-      <aside style="display:flex; flex-direction:column; gap:12px;">
+      <aside style="display:flex; flex-direction:column; gap:6px;">
         @include('partials.right-sidebar')
       </aside>
 

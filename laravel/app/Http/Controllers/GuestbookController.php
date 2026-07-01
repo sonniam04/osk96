@@ -12,7 +12,7 @@ class GuestbookController extends Controller
         $entries = DB::table('guestbook')
             ->where('st', 1)
             ->orderByDesc('id_guestbook')
-            ->paginate(15);
+            ->paginate(7);
 
         return view('guestbook.index', compact('entries'));
     }
