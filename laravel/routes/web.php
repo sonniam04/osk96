@@ -21,6 +21,8 @@ Route::get('/donate',              [AboutController::class, 'donate'])->name('do
 
 // Member Auth
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::get('/login', [MemberAuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [MemberAuthController::class, 'login'])->name('login.post');

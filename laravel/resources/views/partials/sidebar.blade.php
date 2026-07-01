@@ -16,6 +16,55 @@
   }
 @endphp
 
+{{-- โปรไฟล์ผู้ใช้ --}}
+@if(session('user'))
+@php
+  $sidebarUser = session('user');
+  $sidebarImg  = $sidebarUser['fname'] ?? '';
+  $sidebarImgSrc = $sidebarImg
+    ? (file_exists(public_path('uploads/member/'.$sidebarImg))
+        ? asset('uploads/member/'.$sidebarImg)
+        : env('OSK_LEGACY_URL').'/uploads/member/'.$sidebarImg)
+    : null;
+  $sidebarName = explode(' ', $sidebarUser['name'] ?? '');
+@endphp
+<div class="sidebar-section" style="padding:10px 8px; text-align:center; display:flex; flex-direction:column; align-items:center;">
+  {{-- รูป --}}
+  <div style="margin-bottom:6px;">
+    @if($sidebarImgSrc)
+      <img src="{{ $sidebarImgSrc }}"
+           style="width:100px; height:130px; object-fit:cover; object-position:top;
+                  border:3px solid #fff; border-radius:8px;
+                  box-shadow:0 2px 10px rgba(48,142,196,0.45);"
+           onerror="this.style.display='none'">
+    @else
+      <div style="width:100px; height:130px; background:#EBF4FB; border:3px solid #fff;
+                  border-radius:8px; box-shadow:0 2px 10px rgba(48,142,196,0.45);
+                  display:inline-flex; align-items:center; justify-content:center;
+                  color:#94A3B8; font-size:11px;">ไม่มีรูป</div>
+    @endif
+  </div>
+  {{-- ชื่อ --}}
+  <div style="font-size:12px; color:#374151; margin-top:4px;">
+    <span style="color:#CC00CC; font-weight:600;">คุณ</span>
+    {{ $sidebarUser['name'] ?? '' }}
+  </div>
+  {{-- ปุ่ม --}}
+  <div style="margin-top:8px; display:flex; gap:5px; justify-content:center;">
+    <a href="{{ route('profile.edit') }}"
+       style="background:#EBF4FB; color:#003366; border:1px solid #DCEEF8; border-radius:4px;
+              padding:4px 12px; font-size:12px; text-decoration:none; font-weight:600;">
+      แก้ไข
+    </a>
+    <a href="{{ route('logout') }}"
+       style="background:#DC2626; color:#fff; border-radius:4px;
+              padding:4px 12px; font-size:12px; text-decoration:none; font-weight:600;">
+      ออกจากระบบ
+    </a>
+  </div>
+</div>
+@endif
+
 {{-- เมนูหลัก --}}
 <div class="sidebar-section">
   <div class="sidebar-header">เมนูหลัก</div>
@@ -26,7 +75,9 @@
     <a href="#" onclick="document.getElementById('login-modal').style.display='flex';return false;"
        class="menu-item"><span class="dot"></span>เข้าสู่ระบบ</a>
   @else
-    <a href="{{ route('logout') }}" class="menu-item"><span class="dot"></span>ออกจากระบบ</a>
+    <a href="{{ route('profile') }}" class="menu-item" style="{{ sidebarActive('profile') }}">
+      <span class="dot"></span>ข้อมูลของฉัน
+    </a>
   @endif
 </div>
 

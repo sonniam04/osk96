@@ -10,162 +10,121 @@
 
   <div style="padding:16px 20px;">
 
-    {{-- notice --}}
-    <p style="font-size:12px; color:#94A3B8; text-align:center; margin-bottom:16px;">
-      ระบบฐานข้อมูลเพื่อนสวนฯ 92(96) นี้จัดทำขึ้นเพื่ออำนวยความสะดวกสำหรับการติดต่อสื่อสาร
-      กรุณาอย่านำข้อมูลไปใช้ในทางที่เป็นการรบกวนเพื่อน
+    <p style="font-size:11px; color:#94A3B8; text-align:center; margin-bottom:14px;">
+      ระบบฐานข้อมูลเพื่อนสวนฯ 92(96) กรุณาอย่านำข้อมูลไปใช้ในทางที่เป็นการรบกวนเพื่อน
     </p>
 
-    <div style="display:flex; gap:20px; align-items:flex-start;">
+    <div style="display:flex; gap:16px; align-items:flex-start;">
 
       {{-- รูป --}}
-      <div style="flex-shrink:0; text-align:center; width:160px;">
-        @php
-          $img = $member->fname ?? '';
-          $imgSrc = $img
-            ? (file_exists(public_path('uploads/member/'.$img))
-                ? asset('uploads/member/'.$img)
-                : env('OSK_LEGACY_URL').'/uploads/member/'.$img)
-            : null;
-        @endphp
+      @php
+        $img = $member->fname ?? '';
+        $imgSrc = $img
+          ? (file_exists(public_path('uploads/member/'.$img))
+              ? asset('uploads/member/'.$img)
+              : env('OSK_LEGACY_URL').'/uploads/member/'.$img)
+          : null;
+      @endphp
+      <div style="flex-shrink:0; width:130px; text-align:center;">
         @if($imgSrc)
-          <img src="{{ $imgSrc }}" style="width:140px; height:175px; object-fit:cover; object-position:top;
-                border:2px solid #DCEEF8; border-radius:4px;" onerror="this.style.display='none'">
+          <img src="{{ $imgSrc }}" style="width:120px; height:150px; object-fit:cover; object-position:top;
+               border:2px solid #DCEEF8; border-radius:4px;" onerror="this.style.display='none'">
         @else
-          <div style="width:140px; height:175px; background:#EBF4FB; border:2px solid #DCEEF8;
+          <div style="width:120px; height:150px; background:#EBF4FB; border:2px solid #DCEEF8;
                       border-radius:4px; display:flex; align-items:center; justify-content:center;
-                      color:#94A3B8; font-size:12px;">ไม่มีรูป</div>
+                      color:#94A3B8; font-size:11px;">ไม่มีรูป</div>
         @endif
       </div>
 
-      {{-- ตารางข้อมูล --}}
+      {{-- ข้อมูล --}}
       <div style="flex:1; min-width:0;">
-        <table style="width:100%; border-collapse:collapse; font-size:13px;">
 
-          {{-- ชื่อ --}}
-          <tr style="background:#FF99CC;">
-            <td style="padding:6px 10px; width:110px; font-weight:700; color:#003366;">{{ $member->title }}</td>
-            <td style="padding:6px 10px; font-weight:700; color:#003366;" colspan="2">{{ $member->name }}</td>
-            <td style="padding:6px 10px; font-weight:700; color:#003366;" colspan="2">{{ $member->surname }}</td>
-            <td style="padding:6px 10px; color:#003366;">เกิด {{ $member->birthday }}</td>
-          </tr>
+        {{-- ชื่อ --}}
+        <div style="background:#FFAACC; border-radius:4px; padding:8px 12px; margin-bottom:8px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+          <span style="font-weight:700; color:#003366; font-size:14px;">{{ $member->title }} {{ $member->name }} {{ $member->surname }}</span>
+          <span style="color:#003366; font-size:13px; margin-left:auto;">เกิด {{ $member->birthday }}</span>
+        </div>
 
-          {{-- สถานะ/อาชีพ --}}
-          <tr style="border-bottom:1px solid #FCEEF9;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;">สถานะ</td>
-            <td style="padding:5px 10px;" colspan="2">{{ $member->status }}</td>
-            <td style="padding:5px 10px;" colspan="3">{{ $member->work }}</td>
-          </tr>
+        {{-- ตาราง field --}}
+        @php
+          $email = $member->e_mail ?? '';
+          $emailDisplay = ($email === 'X' || $email === 'x' || $email === '') ? '-' : $email;
+          $rows = [
+            ['สถานะ',        ($member->status ?? '-').' '.($member->work ?? '')],
+            ['อีเมล์',       $emailDisplay],
+            ['มือถือ',       $member->tel_h ?: '-'],
+            ['ที่อยู่',      implode(' ', array_filter([
+                               $member->addr1_tambom ?? '',
+                               $member->addr2_amphur ?? '',
+                               $member->addr3_province ?? '',
+                               $member->postal_code ?? '',
+                               $member->telephone ? 'โทร.'.$member->telephone : '',
+                             ]))],
+            ['ที่อยู่ 2/ทำงาน', implode(' ', array_filter([
+                               $member->off ?? '',
+                               $member->off_amphur ?? '',
+                               $member->off_province ?? '',
+                               $member->off_post ?? '',
+                               $member->off_tel ? 'โทร.'.$member->off_tel : '',
+                             ]))],
+            ['งานอดิเรก',   $member->sport ?: '-'],
+            ['Facebook',     $member->facebook ?: '-'],
+            ['Line ID',      $member->line_id ?: '-'],
+            ['บริจาคครั้งสุดท้าย', $member->last_donate ?: '-'],
+          ];
+        @endphp
 
-          {{-- อีเมล / มือถือ --}}
-          <tr style="border-bottom:1px solid #FCEEF9; background:#FDF5FF;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;">อีเมล์</td>
-            <td style="padding:5px 10px;" colspan="3">
-              @php $email = $member->e_mail ?? ''; @endphp
-              {{ ($email === 'X' || $email === 'x' || $email === '') ? '-' : $email }}
-            </td>
-            <td style="padding:5px 10px;" colspan="2">มือถือ&nbsp; {{ $member->tel_h ?: '-' }}</td>
-          </tr>
+        @foreach($rows as $i => [$label, $val])
+        <div style="display:flex; border-bottom:1px solid #FCEEF9; {{ $i%2==0 ? 'background:#FDF5FF;' : '' }}">
+          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#CC00CC; font-weight:600; font-size:13px;">{{ $label }}</div>
+          <div style="padding:5px 10px; font-size:13px; color:#1E293B; word-break:break-word; flex:1;">{{ $val ?: '-' }}</div>
+        </div>
+        @endforeach
 
-          {{-- ที่อยู่ --}}
-          <tr style="border-bottom:1px solid #FCEEF9;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;" rowspan="2">ที่อยู่</td>
-            <td style="padding:5px 10px;" colspan="5">{{ $member->addr1_tambom ?: '-' }}</td>
-          </tr>
-          <tr style="border-bottom:1px solid #FCEEF9; background:#FDF5FF;">
-            <td style="padding:5px 10px;" colspan="2">{{ $member->addr2_amphur ?: '-' }}</td>
-            <td style="padding:5px 10px;">{{ $member->addr3_province ?: '-' }}</td>
-            <td style="padding:5px 10px;">{{ $member->postal_code ?: '-' }}</td>
-            <td style="padding:5px 10px;">โทร. {{ $member->telephone ?: '-' }}</td>
-          </tr>
-
-          {{-- ที่อยู่ 2 / ทำงาน --}}
-          <tr style="border-bottom:1px solid #FCEEF9;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;" rowspan="2">ที่อยู่ 2/ทำงาน</td>
-            <td style="padding:5px 10px;" colspan="5">{{ $member->off ?: '-' }}</td>
-          </tr>
-          <tr style="border-bottom:1px solid #FCEEF9; background:#FDF5FF;">
-            <td style="padding:5px 10px;" colspan="2">{{ $member->off_amphur ?: '-' }}</td>
-            <td style="padding:5px 10px;">{{ $member->off_province ?: '-' }}</td>
-            <td style="padding:5px 10px;">{{ $member->off_post ?: '-' }}</td>
-            <td style="padding:5px 10px;">โทร. {{ $member->off_tel ?: '-' }}</td>
-          </tr>
-
-          {{-- ร่วมงาน --}}
-          @php
-            $actYears = [
-              'act_65'=>65,'act_66'=>66,'act_67'=>67,'act_68'=>68,
-              'act_69'=>69,'act_70'=>70,'act_71'=>71,
-            ];
-          @endphp
-          <tr style="border-bottom:1px solid #FCEEF9;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;" rowspan="2">ร่วมงาน</td>
+        {{-- ร่วมงาน --}}
+        @php
+          $actYears = ['act_65'=>65,'act_66'=>66,'act_67'=>67,'act_68'=>68,'act_69'=>69,'act_70'=>70,'act_71'=>71];
+        @endphp
+        <div style="display:flex; border-bottom:1px solid #FCEEF9; background:#FDF5FF; align-items:center;">
+          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#CC00CC; font-weight:600; font-size:13px;">ร่วมงาน</div>
+          <div style="padding:5px 10px; display:flex; gap:0;">
             @foreach($actYears as $field => $yr)
-              <td style="padding:5px 10px; text-align:center; font-size:12px; color:#64748B;">{{ $yr }}</td>
+            @php
+              $v = $member->$field ?? '';
+              $hit = ($v == $yr);
+            @endphp
+            <div style="text-align:center; min-width:32px;">
+              <div style="font-size:11px; color:#94A3B8;">{{ $yr }}</div>
+              <div style="font-size:12px; font-weight:700; color:{{ $hit ? '#16A34A' : '#CBD5E1' }};">
+                {{ $hit ? $yr : ($v === 'N/A' ? 'N/A' : '-') }}
+              </div>
+            </div>
             @endforeach
-          </tr>
-          <tr style="border-bottom:1px solid #FCEEF9; background:#FDF5FF;">
-            @foreach($actYears as $field => $yr)
-              @php
-                $val = $member->$field ?? '';
-                $display = ($val == $yr) ? $yr : (($val === 'N/A') ? 'N/A' : '-');
-              @endphp
-              <td style="padding:5px 10px; text-align:center; font-size:12px;
-                         color:{{ $display == '-' ? '#CBD5E1' : '#16A34A' }}; font-weight:600;">
-                {{ $display }}
-              </td>
+          </div>
+        </div>
+
+        {{-- ม.ศ. / สมาชิก / ขนาดเสื้อ --}}
+        <div style="display:flex; border-bottom:1px solid #FCEEF9; align-items:center;">
+          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#CC00CC; font-weight:600; font-size:13px;">ม.ศ.</div>
+          <div style="padding:5px 10px; display:flex; gap:12px; font-size:13px; flex-wrap:wrap;">
+            @foreach([1,2,3,4,5] as $n)
+              <span>{{ $n }}/<strong>{{ $member->{'class'.$n} ?: '-' }}</strong></span>
             @endforeach
-          </tr>
-
-          {{-- งานอดิเรก / Facebook / Line --}}
-          <tr style="border-bottom:1px solid #FCEEF9;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;" colspan="2">งานอดิเรก</td>
-            <td style="padding:5px 10px;" colspan="5">{{ $member->sport ?: '-' }}</td>
-          </tr>
-          <tr style="border-bottom:1px solid #FCEEF9; background:#FDF5FF;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;" colspan="2">Facebook</td>
-            <td style="padding:5px 10px;" colspan="5">
-              @if($member->facebook)
-                <a href="{{ $member->facebook }}" target="_blank" style="color:#308EC4;">{{ $member->facebook }}</a>
-              @else -
-              @endif
-            </td>
-          </tr>
-          <tr style="border-bottom:1px solid #FCEEF9;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;" colspan="2">Line ID</td>
-            <td style="padding:5px 10px;" colspan="5">{{ $member->line_id ?: '-' }}</td>
-          </tr>
-          <tr style="border-bottom:1px solid #FCEEF9; background:#FDF5FF;">
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;" colspan="2">บริจาคครั้งสุดท้าย</td>
-            <td style="padding:5px 10px;" colspan="5">{{ $member->last_donate ?: '-' }}</td>
-          </tr>
-
-          {{-- ม.ศ. / สมาชิก / ขนาดเสื้อ --}}
-          <tr>
-            <td style="padding:5px 10px; color:#CC00CC; font-weight:600;">ม.ศ.</td>
-            <td style="padding:5px 10px;">1/{{ $member->class1 ?: '-' }}</td>
-            <td style="padding:5px 10px;">2/{{ $member->class2 ?: '-' }}</td>
-            <td style="padding:5px 10px;">3/{{ $member->class3 ?: '-' }}</td>
-            <td style="padding:5px 10px;">4/{{ $member->class4 ?: '-' }}</td>
-            <td style="padding:5px 10px; font-size:12px;" colspan="2">
-              5/{{ $member->class5 ?: '-' }}
-              &nbsp;&nbsp;สมาชิกสมาคมฯ {{ $member->id_osk ?: '-' }}
-              &nbsp;&nbsp;ขนาดเสื้อ {{ $member->size ?: '-' }}
-            </td>
-          </tr>
-
-        </table>
+            <span style="color:#64748B;">สมาชิกสมาคมฯ {{ $member->id_osk ?: '-' }}</span>
+            <span style="color:#64748B;">ขนาดเสื้อ {{ $member->size ?: '-' }}</span>
+          </div>
+        </div>
 
         {{-- ปุ่ม --}}
-        <div style="margin-top:14px; display:flex; gap:10px; justify-content:flex-end;">
-          <a href="#"
+        <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end;">
+          <a href="{{ route('profile.edit') }}"
              style="background:#EBF4FB; color:#003366; border:1px solid #DCEEF8; border-radius:5px;
-                    padding:6px 20px; font-size:13px; text-decoration:none; font-weight:600;">
-            แก้ไข (เร็วๆ นี้)
+                    padding:6px 18px; font-size:13px; text-decoration:none; font-weight:600;">
+            แก้ไข
           </a>
           <a href="{{ route('logout') }}"
-             style="background:#DC2626; color:#fff; border:none; border-radius:5px;
-                    padding:6px 20px; font-size:13px; text-decoration:none; font-weight:600;">
+             style="background:#DC2626; color:#fff; border-radius:5px;
+                    padding:6px 18px; font-size:13px; text-decoration:none; font-weight:600;">
             ออกจากระบบ
           </a>
         </div>
