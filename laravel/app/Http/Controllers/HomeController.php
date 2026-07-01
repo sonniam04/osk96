@@ -30,6 +30,20 @@ class HomeController extends Controller
             ->select('webboard_question.*', 'webboard_group.group_name')
             ->get();
 
+        // Random activity photos (section 2 — slideshow from photo table)
+        $activityPhotos = DB::table('photo')
+            ->inRandomOrder()
+            ->limit(10)
+            ->pluck('pic_name');
+
+        // Photo/clip posts group_id=6 (section 3 — ภาพเด็คลิปโดน)
+        $photoClips = DB::table('webboard_question')
+            ->where('group_id', 6)
+            ->where('question_status', 1)
+            ->orderByDesc('question_date')
+            ->limit(16)
+            ->get();
+
         // Recent activities
         $activities = DB::table('activity')
             ->orderByDesc('a_id')
@@ -42,6 +56,8 @@ class HomeController extends Controller
         return view('home.index', compact(
             'latestPosts',
             'recentTopics',
+            'activityPhotos',
+            'photoClips',
             'activities',
             'visitorCount'
         ));

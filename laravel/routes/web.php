@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\MemberAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\WebboardController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -19,7 +20,7 @@ Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin
 Route::get('/admin/dashboard', fn() => 'Admin Dashboard (Coming Soon)')->name('admin.dashboard');
 
 // Placeholder routes (จะทำ feature เพิ่มทีละ module)
-Route::get('/webboard', fn() => abort(404))->name('webboard.index');
+Route::get('/webboard', [WebboardController::class, 'index'])->name('webboard.index');
 Route::get('/guestbook', fn() => abort(404))->name('guestbook.index');
 Route::get('/download', fn() => abort(404))->name('download.index');
 Route::get('/bill', fn() => abort(404))->name('bill.index');

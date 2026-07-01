@@ -14,7 +14,7 @@
     <a href="{{ route('webboard.index') }}?question_id={{ $post->question_id }}"
        target="_blank" class="news-card">
       @if(!empty($post->question_file))
-        <img src="/uploads/{{ $post->question_file }}" class="news-thumb" alt="">
+        <img src="{{ env('OSK_LEGACY_URL') }}/uploads/{{ $post->question_file }}" class="news-thumb" alt="">
       @else
         <div style="width:72px; height:72px; flex-shrink:0; display:flex;
                     align-items:center; justify-content:center; background:#fff;
@@ -43,7 +43,7 @@
 {{-- ── Section: Recent Topics ── --}}
 <div class="card" style="overflow:hidden;">
   <div class="section-title">
-    <span>แงโยะอร่อยทุกเรื่อง</span>
+    <span>แกงโฮะอร่อยทุกเรื่อง</span>
     <a href="{{ route('webboard.index') }}">อื่นๆ &rsaquo;&rsaquo;</a>
   </div>
   <div style="overflow-x:auto;">
@@ -85,25 +85,79 @@
   </div>
 </div>
 
-{{-- ── Section: Activities ── --}}
-@if($activities->count())
+{{-- ── Section 2: Activity Slideshow (activity_ran) ── --}}
+@if($activityPhotos->count())
+@push('scripts-head')
+<style>
+.mcal-slide { display:none; }
+.mcal-slide.active { display:block; }
+.slide-dot { width:10px; height:10px; border-radius:50%; background:#ccc; display:inline-block; margin:0 3px; cursor:pointer; transition:background .3s; }
+.slide-dot.active { background:#308EC4; }
+</style>
+@endpush
+<div class="card" style="overflow:hidden;">
+  <div style="position:relative; background:#000; border-radius:10px 10px 0 0; overflow:hidden;">
+    @foreach($activityPhotos as $i => $pic)
+    <div class="mcal-slide{{ $i === 0 ? ' active' : '' }}" data-slide="{{ $i }}">
+      <img src="{{ env('OSK_LEGACY_URL') }}/activity_images/{{ $pic }}"
+           style="width:100%; height:320px; object-fit:cover; display:block;" alt="">
+    </div>
+    @endforeach
+  </div>
+  <div style="text-align:center; padding:8px 0 10px; background:#fff;">
+    @foreach($activityPhotos as $i => $pic)
+    <span class="slide-dot{{ $i === 0 ? ' active' : '' }}" data-idx="{{ $i }}"></span>
+    @endforeach
+  </div>
+</div>
+<script>
+(function(){
+  var slides = document.querySelectorAll('.mcal-slide');
+  var dots   = document.querySelectorAll('.slide-dot');
+  var idx    = 0;
+  function go(n) {
+    slides[idx].classList.remove('active'); dots[idx].classList.remove('active');
+    idx = (n + slides.length) % slides.length;
+    slides[idx].classList.add('active');    dots[idx].classList.add('active');
+  }
+  dots.forEach(function(d){ d.addEventListener('click', function(){ go(+this.dataset.idx); }); });
+  setInterval(function(){ go(idx+1); }, 3000);
+})();
+</script>
+@endif
+
+{{-- ── Section 3: ภาพเด็คลิปโดน (blog_vdo / group_id=6) ── --}}
+@if($photoClips->count())
 <div class="card" style="overflow:hidden;">
   <div class="section-title">
-    <span>กิจกรรม</span>
+    <span>ภาพเด็ดคลิปโดน</span>
+    <a href="{{ route('webboard.index') }}?group_id=6">อื่นๆ &rsaquo;&rsaquo;</a>
   </div>
-  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:16px;">
-    @foreach($activities as $act)
-    <div style="text-align:center;">
-      <img src="{{ asset('images/0skkk2.jpg') }}"
-           style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px;
-                  box-shadow:0 2px 8px rgba(0,0,0,.10);" alt="">
-      <p style="font-size:12px; color:#374151; margin-top:6px; font-weight:500; line-height:1.4;">
-        {{ mb_substr($act->a_name, 0, 30) }}
-      </p>
-    </div>
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#DCEEF8;">
+    @foreach($photoClips as $clip)
+    <a href="{{ route('webboard.index') }}?question_id={{ $clip->question_id }}"
+       target="_blank"
+       style="display:flex; flex-direction:column; align-items:center; gap:6px;
+              padding:10px 8px; background:#fff; text-decoration:none;
+              transition:background .15s;"
+       onmouseover="this.style.background='#EBF4FB'" onmouseout="this.style.background='#fff'">
+      @if(!empty($clip->question_file))
+        <img src="{{ env('OSK_LEGACY_URL') }}/uploads/{{ $clip->question_file }}"
+             style="width:90px; height:72px; object-fit:cover; border-radius:4px;" alt="">
+      @else
+        <div style="width:90px; height:72px; background:#EBF4FB; border-radius:4px;
+                    display:flex; align-items:center; justify-content:center;">
+          <img src="{{ asset('images/fallback.png') }}" style="width:56px; height:56px; object-fit:contain;" alt="">
+        </div>
+      @endif
+      <span style="font-size:11px; color:#003366; text-align:center; line-height:1.4;">
+        {{ mb_substr($clip->question_title, 0, 15) }}...
+      </span>
+    </a>
     @endforeach
   </div>
 </div>
 @endif
+
 
 @endsection
