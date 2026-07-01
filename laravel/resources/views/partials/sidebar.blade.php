@@ -22,11 +22,17 @@
 <div class="sidebar-section">
   <div class="sidebar-header">เกี่ยวกับชมรม</div>
   @foreach([
-    '@คณะกรรมการชมรม','@ตัวแทน/ผู้ประสานงาน','@วิสัยทัศน์ คำนิยม ยุทธศาสตร์',
-    '@ระเบียบการบริหารงาน','@บัญชีสถานะการเงิน','@ดาวน์โหลด'
+    ['label'=>'คณะกรรมการชมรม',         'route'=>'about.committee'],
+    ['label'=>'ตัวแทน/ผู้ประสานงาน',    'route'=>'about.rooms'],
+    ['label'=>'วิสัยทัศน์ คำนิยม ยุทธศาสตร์', 'route'=>'about.vision'],
+    ['label'=>'ระเบียบการบริหารงาน',    'route'=>'about.manage'],
+    ['label'=>'ระเบียบว่าด้วยเงิน',     'route'=>'about.money'],
+    ['label'=>'รักรุ่นจริงไม่ทิ้งกัน', 'route'=>'donate'],
+    ['label'=>'เพลงสวน',                'url'=>route('webboard.index').'?group_id=31&old_group_id=31'],
   ] as $item)
-  <a href="#" class="menu-item" style="font-size:13px; color:#4B5563;">
-    <span style="color:#3B82F6; font-size:11px;">●</span> {{ $item }}
+  @php $href = isset($item['url']) ? $item['url'] : route($item['route']); @endphp
+  <a href="{{ $href }}" class="menu-item" style="font-size:13px; color:#4B5563;">
+    <span style="color:#3B82F6; font-size:11px;">●</span> {{ $item['label'] }}
   </a>
   @endforeach
 </div>
