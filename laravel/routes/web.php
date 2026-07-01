@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\MemberAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\WebboardController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\GuestbookController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -30,7 +31,8 @@ Route::get('/admin/dashboard', fn() => 'Admin Dashboard (Coming Soon)')->name('a
 
 // Placeholder routes (จะทำ feature เพิ่มทีละ module)
 Route::get('/webboard', [WebboardController::class, 'index'])->name('webboard.index');
-Route::get('/guestbook', fn() => abort(404))->name('guestbook.index');
+Route::get('/guestbook',  [GuestbookController::class, 'index'])->name('guestbook.index');
+Route::post('/guestbook', [GuestbookController::class, 'store'])->name('guestbook.store');
 Route::get('/download', fn() => abort(404))->name('download.index');
 Route::get('/bill', [AboutController::class, 'bill'])->name('bill.index');
 Route::get('/message', fn() => abort(404))->name('message.index');
