@@ -26,6 +26,7 @@
   justify-content: space-between;
   padding: 8px 12px 6px;
   border-bottom: 2px solid #308EC4;
+  border-radius: 10px 10px 0 0;
 }
 .mcal-header .mcal-label {
   font-size: 13px;

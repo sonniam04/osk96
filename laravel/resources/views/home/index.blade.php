@@ -16,7 +16,12 @@
       @if(!empty($post->question_file))
         <img src="/uploads/{{ $post->question_file }}" class="news-thumb" alt="">
       @else
-        <img src="{{ asset('images/0skkk2.jpg') }}" class="news-thumb" alt="">
+        <div style="width:72px; height:72px; flex-shrink:0; display:flex;
+                    align-items:center; justify-content:center; background:#fff;
+                    border-radius:4px; border:1px solid #DCEEF8;">
+          <img src="{{ asset('images/fallback.png') }}"
+               style="width:64px; height:64px; object-fit:contain;" alt="">
+        </div>
       @endif
       <div style="flex:1; min-width:0;">
         <div class="news-title">{{ $post->question_title }}</div>
@@ -42,29 +47,29 @@
     <a href="{{ route('webboard.index') }}">อื่นๆ &rsaquo;&rsaquo;</a>
   </div>
   <div style="overflow-x:auto;">
-    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+    <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
       <thead>
         <tr style="background:#EBF4FB; border-bottom:2px solid #308EC4;">
-          <th style="padding:10px 14px; text-align:left; color:#003366; font-weight:700;">หัวข้อ</th>
-          <th style="padding:10px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">หมวด</th>
-          <th style="padding:10px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">วันเดือนปี</th>
+          <th style="padding:6px 14px; text-align:left; color:#003366; font-weight:700;">หัวข้อ</th>
+          <th style="padding:6px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">หมวด</th>
+          <th style="padding:6px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">วันเดือนปี</th>
         </tr>
       </thead>
       <tbody>
         @forelse($recentTopics as $topic)
         <tr style="border-bottom:1px solid #F1F5F9; transition:background .15s;"
             onmouseover="this.style.background='#EBF4FB'" onmouseout="this.style.background=''">
-          <td style="padding:9px 14px;">
+          <td style="padding:4px 14px;">
             <a href="{{ route('webboard.index') }}?question_id={{ $topic->question_id }}"
                target="_blank"
-               style="color:#003366; text-decoration:none; font-weight:500; line-height:1.4; display:block;">
+               style="color:#003366; text-decoration:none; font-weight:500; line-height:1.3; display:block;">
               {{ mb_substr($topic->question_title, 0, 60) }}...
             </a>
           </td>
-          <td style="padding:9px 14px; text-align:center;">
+          <td style="padding:4px 14px; text-align:center;">
             <span class="tag">{{ $topic->group_name }}</span>
           </td>
-          <td style="padding:9px 14px; text-align:center; color:#64748B; white-space:nowrap;">
+          <td style="padding:4px 14px; text-align:center; color:#64748B; white-space:nowrap;">
             @php
               $d = \Carbon\Carbon::parse($topic->question_date);
               $mm = ['','ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];

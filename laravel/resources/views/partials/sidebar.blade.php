@@ -3,7 +3,8 @@
   <div class="sidebar-header">เมนูหลัก</div>
   <a href="{{ route('home') }}" class="menu-item"><span class="dot"></span>หน้าแรก</a>
   @if(!session('user'))
-    <a href="{{ route('login') }}" class="menu-item"><span class="dot"></span>เข้าสู่ระบบ</a>
+    <a href="#" onclick="document.getElementById('login-modal').style.display='flex';return false;"
+       class="menu-item"><span class="dot"></span>เข้าสู่ระบบ</a>
   @else
     <a href="{{ route('logout') }}" class="menu-item"><span class="dot"></span>ออกจากระบบ</a>
   @endif
