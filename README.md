@@ -26,6 +26,18 @@ php artisan serve
 
 เปิดเบราว์เซอร์ที่ `http://localhost:8000`
 
+## วิธีอัปเดตเมื่อมีเวอร์ชันใหม่
+
+### Windows
+```bat
+update.bat
+```
+
+### Linux / Mac
+```bash
+chmod +x update.sh && ./update.sh
+```
+
 ## วิธีรันด้วย Docker
 ```bash
 docker compose up -d
