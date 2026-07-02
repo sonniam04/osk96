@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'ระเบียบการบริหารงาน — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -13,7 +13,7 @@
       ระเบียบการบริหารงานของชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่นที่ 96 (2516-2520)
     </p>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:16px 0 10px;">วัตถุประสงค์</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:16px 0 10px;">วัตถุประสงค์</h3>
     <ol style="margin:0 0 16px 20px;">
       <li>เพื่อสร้างความสามัคคีภายในศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่นที่ 96</li>
       <li>เพื่อช่วยเหลือเกื้อกูลซึ่งกันและกันภายในศิษย์เก่าสวนกุหลาบวิทยาลัย</li>
@@ -31,7 +31,7 @@
       <li>เรียน ม.ศ. 5 โรงเรียนสวนกุหลาบวิทยาลัย ปีการศึกษา พ.ศ. 2520</li>
     </ul>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:16px 0 10px;">ประธานฯ และคณะกรรมการ</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:16px 0 10px;">ประธานฯ และคณะกรรมการ</h3>
     <p>เพื่อให้การดำเนินกิจกรรมของชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่นที่ 96 ดำเนินไปตามวัตถุประสงค์ด้วยความเรียบร้อย จึงจำเป็นต้องมีประธานฯ และคณะกรรมการชมรมฯ จำนวน 2 คณะ ดังนี้</p>
 
     <p><strong>1. คณะกรรมการนโยบาย</strong> ประกอบด้วย</p>
@@ -44,7 +44,7 @@
 
     <p><strong>2. คณะกรรมการดำเนินงาน</strong> ประกอบด้วย ประธานฯ / รองประธาน / เลขานุการ / เหรัญญิก / ปฏิคม-ผู้ประสานงาน / นายทะเบียน / ประชาสัมพันธ์ / กิจกรรม / ที่ปรึกษา</p>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:16px 0 10px;">อำนาจและหน้าที่</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:16px 0 10px;">อำนาจและหน้าที่</h3>
 
     @foreach([
       ['1. ประธาน', ['ดำเนินการบริหารงานตามวัตถุประสงค์ของชมรมฯ', 'ดำเนินการจัดกิจกรรมต่างๆ เพื่อเสริมสร้างชมรมฯ ให้เข้มแข็งและมีความสามัคคี', 'ดำเนินการจัดสวัสดิการต่างๆ ให้กับสมาชิกชมรมฯ', 'เป็นประธานที่ประชุมคณะกรรมการนโยบาย และคณะกรรมการดำเนินงาน']],
@@ -66,7 +66,7 @@
     </ul>
     @endforeach
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:16px 0 10px;">ระเบียบและข้อบังคับ</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:16px 0 10px;">ระเบียบและข้อบังคับ</h3>
     <p>เพื่อให้บรรลุวัตถุประสงค์ตามที่กำหนดไว้ ให้ประธานมีอำนาจออกระเบียบต่างๆ หรือเสนอแก้ไขระเบียบข้อบังคับ ที่เห็นว่าจำเป็นเพื่อให้กิจกรรมของชมรมฯ ดำเนินไปด้วยความเหมาะสม โดยจะต้องได้รับความเห็นชอบจากเสียงส่วนใหญ่ของคณะกรรมการนโยบาย</p>
 
     <p style="font-size:12px; color:#94A3B8; text-align:right; margin-top:16px;">ปรับปรุง 25 พ.ย. 2563</p>

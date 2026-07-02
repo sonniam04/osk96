@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'รักรุ่นจริงไม่ทิ้งกัน — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -10,7 +10,7 @@
 
   <div style="padding:24px 20px; text-align:center;">
     <p style="font-size:22px; font-weight:700; color:#003366; margin-bottom:8px;">รักรุ่นจริงไม่ทิ้งกัน</p>
-    <p style="font-size:15px; color:#308EC4; margin-bottom:24px;">" เราไม่ทิ้งกัน "</p>
+    <p style="font-size:15px; color:#38B8F5; margin-bottom:24px;">" เราไม่ทิ้งกัน "</p>
     <p style="font-size:13.5px; color:#4B5563; line-height:1.8; max-width:500px; margin:0 auto;">
       ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่นที่ 96 จัดตั้งกองทุน "รักรุ่นจริงไม่ทิ้งกัน"
       เพื่อช่วยเหลือเพื่อนร่วมรุ่นที่ประสบปัญหาหรือต้องการความช่วยเหลือ
@@ -22,7 +22,7 @@
     </div>
     <div style="margin-top:16px;">
       <a href="{{ route('webboard.index') }}?group_id=12&old_group_id=0"
-         style="display:inline-block; background:#308EC4; color:#fff; padding:10px 24px;
+         style="display:inline-block; background:#38B8F5; color:#fff; padding:10px 24px;
                 border-radius:6px; text-decoration:none; font-size:14px; font-weight:600;">
         ดูกระทู้ในหมวด "รักรุ่นจริงไม่ทิ้งกัน"
       </a>

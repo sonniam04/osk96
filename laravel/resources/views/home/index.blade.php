@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -48,7 +48,7 @@
   <div style="overflow-x:auto;">
     <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
       <thead>
-        <tr style="background:#EBF4FB; border-bottom:2px solid #308EC4;">
+        <tr style="background:#EBF4FB; border-bottom:2px solid #38B8F5;">
           <th style="padding:6px 14px; text-align:left; color:#003366; font-weight:700;">หัวข้อ</th>
           <th style="padding:6px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">หมวด</th>
           <th style="padding:6px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap;">วันเดือนปี</th>
@@ -93,7 +93,7 @@
 .mcal-slide { display:none; }
 .mcal-slide.active { display:block; }
 .slide-dot { width:10px; height:10px; border-radius:50%; background:#ccc; display:inline-block; margin:0 3px; cursor:pointer; transition:background .3s; }
-.slide-dot.active { background:#308EC4; }
+.slide-dot.active { background:#38B8F5; }
 </style>
 @endpush
 <div class="card" style="overflow:hidden;">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'แก้ไขข้อมูลส่วนตัว')
 
 @section('content')
@@ -233,7 +233,7 @@
       {{-- ปุ่ม --}}
       <div style="margin-top:14px; display:flex; gap:8px; justify-content:center;">
         <button type="submit"
-                style="background:#308EC4; color:#fff; border:none; border-radius:5px;
+                style="background:#38B8F5; color:#fff; border:none; border-radius:5px;
                        padding:8px 28px; font-size:13px; font-weight:600; cursor:pointer;">
           บันทึกข้อมูล
         </button>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'สมุดเยี่ยม — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -111,7 +111,7 @@
           <td></td>
           <td style="padding:10px 14px;">
             <button type="submit"
-                    style="background:#308EC4; color:#fff; border:none; border-radius:6px;
+                    style="background:#38B8F5; color:#fff; border:none; border-radius:6px;
                            padding:8px 24px; font-size:13px; font-family:'Sarabun',sans-serif;
                            cursor:pointer; font-weight:600;">
               ลงนามในสมุดเยี่ยม
@@ -172,21 +172,21 @@
       <span style="padding:4px 10px; border-radius:4px; font-size:13px; color:#94A3B8;">&laquo;</span>
     @else
       <a href="{{ $entries->previousPageUrl() }}"
-         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#308EC4; text-decoration:none;">&laquo;</a>
+         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#38B8F5; text-decoration:none;">&laquo;</a>
     @endif
 
     @foreach($entries->getUrlRange(1, $entries->lastPage()) as $page => $url)
       @if($page == $entries->currentPage())
-        <span style="padding:4px 10px; border-radius:4px; font-size:13px; background:#308EC4; color:#fff; font-weight:700;">{{ $page }}</span>
+        <span style="padding:4px 10px; border-radius:4px; font-size:13px; background:#38B8F5; color:#fff; font-weight:700;">{{ $page }}</span>
       @else
         <a href="{{ $url }}"
-           style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#308EC4; text-decoration:none;">{{ $page }}</a>
+           style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#38B8F5; text-decoration:none;">{{ $page }}</a>
       @endif
     @endforeach
 
     @if($entries->hasMorePages())
       <a href="{{ $entries->nextPageUrl() }}"
-         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#308EC4; text-decoration:none;">&raquo;</a>
+         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#38B8F5; text-decoration:none;">&raquo;</a>
     @else
       <span style="padding:4px 10px; border-radius:4px; font-size:13px; color:#94A3B8;">&raquo;</span>
     @endif

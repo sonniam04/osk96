@@ -1,17 +1,17 @@
-@php
+﻿@php
   $currentRoute = request()->route()?->getName();
   $currentUrl   = request()->url();
   $currentPath  = request()->path();
 
   function sidebarActive(string $routeName): string {
     return request()->route()?->getName() === $routeName
-      ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #308EC4;'
+      ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #38B8F5;'
       : '';
   }
 
   function sidebarActiveUrl(string $url): string {
     return request()->url() === $url || str_starts_with(request()->url(), $url)
-      ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #308EC4;'
+      ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #38B8F5;'
       : '';
   }
 @endphp
@@ -137,7 +137,7 @@
     $wbActive = ($currentRoute === 'webboard.index'
                  && request()->get('group_id') == $item['g']
                  && request()->get('old_group_id') == $item['o'])
-              ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #308EC4;'
+              ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #38B8F5;'
               : '';
   @endphp
   <a href="{{ $wbHref }}" class="menu-item" style="font-size:13px; {{ $wbActive }}">
@@ -161,7 +161,7 @@
     $wbActive = ($currentRoute === 'webboard.index'
                  && request()->get('group_id') == $item['g']
                  && request()->get('old_group_id') == $item['o'])
-              ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #308EC4;'
+              ? 'background:#DBEAFE; color:#1D4ED8; font-weight:700; border-left:3px solid #38B8F5;'
               : '';
   @endphp
   <a href="{{ $wbHref }}" class="menu-item" style="font-size:13px; {{ $wbActive }}">

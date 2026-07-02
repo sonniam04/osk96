@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
@@ -13,18 +13,18 @@
           brand: { DEFAULT: '#3B82F6', dark: '#1D4ED8', light: '#EFF6FF' },
         },
         fontFamily: {
-          sans: ['Sarabun', 'sans-serif'],
+          sans: ['Noto Sans Thai', 'sans-serif'],
         },
       }
     }
   }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="{{ asset('style.css') }}" rel="stylesheet">
 <style>
   /* ── Original color palette ── */
   :root {
-    --osk-blue:   #308EC4;
+    --osk-blue:   #38B8F5;
     --osk-blue2:  #4169E1;
     --osk-dark:   #003366;
     --osk-orange: #FF6600;
@@ -33,8 +33,8 @@
 
   body {
     background: url('{{ asset('images/bg.jpg') }}') repeat-x fixed;
-    background-color: #308EC4;
-    font-family: 'Sarabun', sans-serif;
+    background-color: #38B8F5;
+    font-family: 'Noto Sans Thai', sans-serif;
   }
 
   /* main wrapper */
@@ -52,7 +52,7 @@
   .section-title {
     display:flex; align-items:center; justify-content:space-between;
     padding: 7px 14px;
-    background: #308EC4;
+    background: #38B8F5;
     color: #fff;
     font-weight: 700;
     font-size: 14px;
@@ -76,7 +76,7 @@
     font-weight: 700;
     font-size: 13px;
     padding: 6px 14px 5px;
-    border-bottom: 2px solid #308EC4;
+    border-bottom: 2px solid #38B8F5;
     letter-spacing: .2px;
   }
 
@@ -88,7 +88,7 @@
     transition:background .15s, color .15s, padding-left .15s;
     text-decoration:none; font-weight:500;
   }
-  .menu-item:hover { background:#EBF4FB; color:#308EC4; padding-left:20px; }
+  .menu-item:hover { background:#EBF4FB; color:#38B8F5; padding-left:20px; }
   .menu-item .dot { width:7px; height:7px; background:#FF6600; border-radius:50%; flex-shrink:0; }
 
   /* news cards */
@@ -105,12 +105,12 @@
     display:block;
   }
   .news-title { font-size:14px; font-weight:700; color:#003366; line-height:1.5; }
-  .news-title:hover { color:#308EC4; }
+  .news-title:hover { color:#38B8F5; }
   .news-excerpt { font-size:12.5px; color:#555; line-height:1.6; margin-top:4px; }
 
   .tag {
     display:inline-block; font-size:11px; padding:2px 9px; border-radius:99px;
-    background:#EBF4FB; color:#308EC4; font-weight:600;
+    background:#EBF4FB; color:#38B8F5; font-weight:600;
   }
 </style>
 @stack('scripts-head')
@@ -127,7 +127,7 @@
   <div style="max-width:1160px; margin:0 auto;">
     <div style="display:flex; align-items:center; justify-content:space-between;
                 padding:3px 16px; font-size:12px;
-                background:linear-gradient(90deg,#308EC4,#4169E1); color:#fff;
+                background:linear-gradient(90deg,#38B8F5,#4169E1); color:#fff;
                 border-radius:0 0 10px 10px;">
       <span style="font-style:italic; opacity:.85;">You won't be alone</span>
       <span style="font-weight:700; letter-spacing:2px;">WWW.OSK96.COM</span>
@@ -165,14 +165,14 @@
        onclick="if(event.target===this)this.style.display='none'"
        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.45);
               z-index:9999; align-items:center; justify-content:center;">
-    <div style="background:#BDD2F9; border:1px solid #FFCCFF; border-radius:10px;
+    <div style="background:#fff; border:1px solid #ccc; border-radius:10px;
                 width:460px; box-shadow:0 8px 32px rgba(0,0,0,.25); overflow:hidden;">
 
       {{-- Header --}}
-      <div style="background:#fff; padding:10px 16px; display:flex; align-items:center; justify-content:space-between;">
-        <span style="color:#CC0000; font-size:13px; font-weight:600;">ระบบจัดการฐานข้อมูลสมาชิกชมรม</span>
+      <div style="background:#38B8F5; padding:10px 16px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="color:#fff; font-size:13px; font-weight:600;">ระบบจัดการฐานข้อมูลสมาชิกชมรม</span>
         <button onclick="document.getElementById('login-modal').style.display='none'"
-                style="background:none; border:none; font-size:18px; cursor:pointer; color:#666; line-height:1;">×</button>
+                style="background:none; border:none; font-size:18px; cursor:pointer; color:#fff; line-height:1;">×</button>
       </div>
 
       {{-- Form --}}
@@ -189,15 +189,15 @@
           <label style="font-size:13px; text-align:right; white-space:nowrap;">เลขประจำตัวนักเรียน :</label>
           <input name="username" type="text" value="{{ old('username') }}"
                  style="border:1px solid #aaa; border-radius:4px; padding:5px 8px;
-                        font-family:'Sarabun',sans-serif; font-size:13px; box-sizing:border-box;">
+                        font-family:'Noto Sans Thai',sans-serif; font-size:13px; box-sizing:border-box;">
           <label style="font-size:13px; text-align:right; white-space:nowrap;">รหัสผ่าน :</label>
           <input name="password" type="password"
                  style="border:1px solid #aaa; border-radius:4px; padding:5px 8px;
-                        font-family:'Sarabun',sans-serif; font-size:13px; box-sizing:border-box;">
+                        font-family:'Noto Sans Thai',sans-serif; font-size:13px; box-sizing:border-box;">
           <div style="grid-column:1/-1; text-align:center; padding-top:6px;">
             <button type="submit"
-                    style="background:#308EC4; color:#fff; border:none; border-radius:5px;
-                           padding:7px 36px; font-family:'Sarabun',sans-serif; font-size:13px;
+                    style="background:#38B8F5; color:#fff; border:none; border-radius:5px;
+                           padding:7px 36px; font-family:'Noto Sans Thai',sans-serif; font-size:13px;
                            font-weight:600; cursor:pointer;">
               เข้าสู่ระบบ
             </button>
@@ -211,7 +211,7 @@
         เพื่อรักษาและป้องกันข้อมูลส่วนตัว ฉะนั้นเพื่อนท่านใดที่ต้องการสอบถามหรือแก้ไขข้อมูล<br>
         กรุณาติดต่อตัวแทนหรือห้องต่อผ่านทางเว็บมาสเตอร์ผู้ดูแลระบบ OSK96
         <span style="color:#CC0000;">E-mail</span>
-        <a href="mailto:webmaster.osk@gmail.com" style="color:#308EC4;">webmaster.osk@gmail.com</a>
+        <a href="mailto:webmaster.osk@gmail.com" style="color:#38B8F5;">webmaster.osk@gmail.com</a>
       </div>
     </div>
   </div>

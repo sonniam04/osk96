@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'ระเบียบว่าด้วยเงิน — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -13,29 +13,29 @@
       ระเบียบว่าด้วยเงินของชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่นที่ 96 (2516-2520)
     </p>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 10px;">1. เงินของชมรมฯ ให้หมายถึง</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 10px;">1. เงินของชมรมฯ ให้หมายถึง</h3>
     <ul style="margin:0 0 16px 20px;">
       <li>เงินที่เก็บได้จากเพื่อนร่วมชมรมฯ</li>
       <li>เงินที่ได้รับจากการบริจาค หรือรายได้จากการจัดกิจกรรมของชมรมฯ</li>
       <li>เงินผลประโยชน์ต่างๆ</li>
     </ul>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 10px;">2. วัตถุประสงค์ของเงินของชมรมฯ</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 10px;">2. วัตถุประสงค์ของเงินของชมรมฯ</h3>
     <ul style="margin:0 0 16px 20px;">
       <li>เพื่อดำเนินกิจกรรมของชมรมฯ</li>
       <li>เพื่อการสงเคราะห์</li>
       <li>เพื่อกิจกรรมสาธารณะประโยชน์</li>
     </ul>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 10px;">3. ความหมายในการใช้เงิน</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 10px;">3. ความหมายในการใช้เงิน</h3>
     <p><strong>3.1 เพื่อการดำเนินกิจกรรมของชมรมฯ</strong> ได้แก่ ค่าใช้จ่ายในการประชุม ค่าใช้จ่ายในการส่งข้อมูลข่าวสาร ค่าจ้างเจ้าหน้าที่ ค่าจัดทำทำเนียบรุ่น ค่าใช้จ่ายตามประเพณีปฏิบัติของชมรมฯ</p>
     <p><strong>3.2 เพื่อการสงเคราะห์</strong> ได้แก่ การใช้จ่ายเงินเพื่อสงเคราะห์ช่วยเหลือเพื่อนร่วมรุ่น และครอบครัวของเพื่อนร่วมรุ่นที่เสียชีวิต เพื่อนร่วมรุ่นที่เจ็บป่วยต้องใช้จ่ายค่ารักษาพยาบาล หรืออยู่ในฐานะขัดสน ทุพพลภาพ หรือประสบภัยพิบัติ</p>
     <p><strong>3.3 เพื่อกิจกรรมสาธารณะประโยชน์</strong> ได้แก่ การสนับสนุนช่วยเหลือการจัดกิจกรรมของโรงเรียนสวนกุหลาบวิทยาลัย กิจกรรมทางศาสนา กิจกรรมทางการศึกษา หรือกิจกรรมเพื่อการกุศล</p>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:16px 0 10px;">9. หลักเกณฑ์การใช้จ่าย</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:16px 0 10px;">9. หลักเกณฑ์การใช้จ่าย</h3>
     <table style="width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px;">
       <thead>
-        <tr style="background:#308EC4; color:#fff;">
+        <tr style="background:#38B8F5; color:#fff;">
           <th style="padding:8px 14px; text-align:left;">ประเภท</th>
           <th style="padding:8px 14px; text-align:right; width:160px;">วงเงิน</th>
         </tr>

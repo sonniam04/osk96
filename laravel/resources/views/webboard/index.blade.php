@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', $groupName . ' — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -51,7 +51,7 @@
              style="border:1px solid #DCEEF8; border-radius:6px; padding:5px 10px;
                     font-size:13px; font-family:'Sarabun',sans-serif; width:180px;">
       <button type="submit"
-              style="background:#308EC4; color:#fff; border:none; border-radius:6px;
+              style="background:#38B8F5; color:#fff; border:none; border-radius:6px;
                      padding:5px 14px; font-size:13px; font-family:'Sarabun',sans-serif; cursor:pointer;">
         ค้นหา
       </button>
@@ -62,7 +62,7 @@
   <div style="overflow-x:auto;">
     <table style="width:100%; border-collapse:collapse; font-size:13px;">
       <thead>
-        <tr style="background:#EBF4FB; border-bottom:2px solid #308EC4;">
+        <tr style="background:#EBF4FB; border-bottom:2px solid #38B8F5;">
           <th style="padding:8px 14px; text-align:center; color:#003366; font-weight:700; width:70px;">No.</th>
           <th style="padding:8px 14px; text-align:left;  color:#003366; font-weight:700;">หัวข้อ</th>
           <th style="padding:8px 14px; text-align:center; color:#003366; font-weight:700; white-space:nowrap; width:55px;">ดู</th>
@@ -93,7 +93,7 @@
             @if($isNew)
               <span style="font-size:10px; background:#FF6600; color:#fff; border-radius:3px; padding:1px 5px; margin-left:4px;">ใหม่</span>
             @elseif($isUpdate)
-              <span style="font-size:10px; background:#308EC4; color:#fff; border-radius:3px; padding:1px 5px; margin-left:4px;">อัปเดต</span>
+              <span style="font-size:10px; background:#38B8F5; color:#fff; border-radius:3px; padding:1px 5px; margin-left:4px;">อัปเดต</span>
             @endif
           </td>
           <td style="padding:3px 14px; text-align:center; color:#64748B;">{{ $post->question_view ?? 0 }}</td>
@@ -123,21 +123,21 @@
       <span style="padding:4px 10px; border-radius:4px; font-size:13px; color:#94A3B8;">&laquo;</span>
     @else
       <a href="{{ $posts->previousPageUrl() }}"
-         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#308EC4; text-decoration:none;">&laquo;</a>
+         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#38B8F5; text-decoration:none;">&laquo;</a>
     @endif
 
     @foreach($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
       @if($page == $posts->currentPage())
-        <span style="padding:4px 10px; border-radius:4px; font-size:13px; background:#308EC4; color:#fff; font-weight:700;">{{ $page }}</span>
+        <span style="padding:4px 10px; border-radius:4px; font-size:13px; background:#38B8F5; color:#fff; font-weight:700;">{{ $page }}</span>
       @else
         <a href="{{ $url }}"
-           style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#308EC4; text-decoration:none;">{{ $page }}</a>
+           style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#38B8F5; text-decoration:none;">{{ $page }}</a>
       @endif
     @endforeach
 
     @if($posts->hasMorePages())
       <a href="{{ $posts->nextPageUrl() }}"
-         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#308EC4; text-decoration:none;">&raquo;</a>
+         style="padding:4px 10px; border-radius:4px; font-size:13px; background:#EBF4FB; color:#38B8F5; text-decoration:none;">&raquo;</a>
     @else
       <span style="padding:4px 10px; border-radius:4px; font-size:13px; color:#94A3B8;">&raquo;</span>
     @endif

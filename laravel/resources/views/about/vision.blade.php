@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'วิสัยทัศน์ คำนิยม ยุทธศาสตร์ — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -10,12 +10,12 @@
 
   <div style="padding:16px 20px; font-size:13.5px; line-height:1.8; color:#1E293B;">
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">วิสัยทัศน์</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">วิสัยทัศน์</h3>
     <p style="text-align:center; font-size:15px; font-weight:700; color:#003366; margin-bottom:20px;">
       เสริมสร้างความสัมพันธ์ มุ่งมั่นมิตรไมตรี ตามวิถีสวนกุหลาบ
     </p>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">พันธกิจ</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">พันธกิจ</h3>
     <ol style="margin:0 0 20px 20px; padding:0;">
       <li style="margin-bottom:6px;">สร้างความสัมพันธ์ระหว่างเพื่อนร่วมรุ่น และร่วมโรงเรียนสวนกุหลาบวิทยาลัย</li>
       <li style="margin-bottom:6px;">ช่วยเหลือเกื้อกูลซึ่งกันและกันภายในศิษย์เก่าสวนกุหลาบวิทยาลัย</li>
@@ -23,10 +23,10 @@
       <li style="margin-bottom:6px;">ประกอบกิจกรรมที่เป็นประโยชน์ต่อสังคม และโรงเรียนสวนกุหลาบวิทยาลัย</li>
     </ol>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">ค่านิยมและวัฒนธรรมองค์กร</h3>
-    <p style="text-align:center; font-size:18px; font-weight:700; color:#308EC4; margin-bottom:20px;">" เราไม่ทิ้งกัน "</p>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">ค่านิยมและวัฒนธรรมองค์กร</h3>
+    <p style="text-align:center; font-size:18px; font-weight:700; color:#38B8F5; margin-bottom:20px;">" เราไม่ทิ้งกัน "</p>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">ยุทธศาสตร์</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">ยุทธศาสตร์</h3>
     <ol style="margin:0 0 20px 20px; padding:0;">
       <li style="margin-bottom:6px;">จัดให้มีกิจกรรมเสริมสร้างความสัมพันธ์ระหว่างเพื่อนในรุ่น อย่างสม่ำเสมอ</li>
       <li style="margin-bottom:6px;">เสริมสร้างความสัมพันธ์ กับเพื่อน พี่ น้อง ศิษย์โรงเรียนสวนกุหลาบวิทยาลัย</li>
@@ -37,7 +37,7 @@
       <li style="margin-bottom:6px;">จัดให้มีการช่วยเหลือการจัดกิจกรรมที่เกี่ยวข้องกับโรงเรียนสวนกุหลาบวิทยาลัย</li>
     </ol>
 
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">เป้าประสงค์</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">เป้าประสงค์</h3>
     <ol style="margin:0 0 20px 20px; padding:0;">
       <li style="margin-bottom:6px;">มีกิจกรรมพบปะสังสรรค์ เป็นประจำทุกเดือน และมีกิจกรรมที่สำคัญ อย่างน้อยปีละครั้ง</li>
       <li style="margin-bottom:6px;">ชมรมฯ ต้องเป็นที่รู้จักของ ศิษย์สวนกุหลาบวิทยาลัย ทุกรุ่น โดยมีเครือข่ายเชื่อมโยง</li>

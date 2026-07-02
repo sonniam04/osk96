@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', $question->question_title)
 
 @section('content')
@@ -145,7 +145,7 @@
 
           <div style="text-align:center;">
             <button type="submit"
-                    style="background:#308EC4; color:#fff; border:none; border-radius:5px;
+                    style="background:#38B8F5; color:#fff; border:none; border-radius:5px;
                            padding:8px 32px; font-size:13px; font-weight:600; cursor:pointer;">
               บันทึก
             </button>
@@ -157,7 +157,7 @@
     <div style="text-align:center; padding:14px; font-size:13px; color:#64748B;
                 border:1px dashed #DCEEF8; border-radius:6px; margin-top:6px;">
       <a href="#" onclick="document.getElementById('login-modal').style.display='flex';return false;"
-         style="color:#308EC4; font-weight:600;">เข้าสู่ระบบ</a>
+         style="color:#38B8F5; font-weight:600;">เข้าสู่ระบบ</a>
       เพื่อเสนอความคิดเห็น
     </div>
     @endif

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'บัญชีสถานะการเงิน — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -15,7 +15,7 @@
 
     <table style="width:100%; border-collapse:collapse; font-size:13px;">
       <thead>
-        <tr style="background:#308EC4; color:#fff;">
+        <tr style="background:#38B8F5; color:#fff;">
           <th style="padding:8px 14px; text-align:left;">ชื่อบัญชี</th>
           <th style="padding:8px 14px; text-align:center; width:70px;">เลขที่บัญชี</th>
           <th style="padding:8px 14px; text-align:right; width:120px;">ยกมา</th>

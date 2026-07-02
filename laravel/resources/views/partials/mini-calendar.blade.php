@@ -1,4 +1,4 @@
-@php
+﻿@php
     $now = now();
     $year  = (int) request('Y', $now->year);
     $month = (int) request('m', $now->month);
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px 6px;
-  border-bottom: 2px solid #308EC4;
+  border-bottom: 2px solid #38B8F5;
   border-radius: 10px 10px 0 0;
 }
 .mcal-header .mcal-label {
@@ -35,7 +35,7 @@
   letter-spacing: 0.2px;
 }
 .mcal-header a {
-  color: #308EC4;
+  color: #38B8F5;
   text-decoration: none;
   font-size: 15px;
   line-height: 1;
@@ -81,7 +81,7 @@
 .mcal-day.sun { color: #EF4444; }
 .mcal-day.sat { color: #8B5CF6; }
 .mcal-day.today {
-  background: #308EC4;
+  background: #38B8F5;
   color: #fff;
   font-weight: 700;
 }

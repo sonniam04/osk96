@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'ข้อมูลส่วนตัว — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -40,9 +40,9 @@
       <div style="flex:1; min-width:0;">
 
         {{-- ชื่อ --}}
-        <div style="background:#FFAACC; border-radius:4px; padding:8px 12px; margin-bottom:8px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
-          <span style="font-weight:700; color:#003366; font-size:14px;">{{ $member->title }} {{ $member->name }} {{ $member->surname }}</span>
-          <span style="color:#003366; font-size:13px; margin-left:auto;">เกิด {{ $member->birthday }}</span>
+        <div style="background:#38B8F5; border-radius:4px; padding:8px 12px; margin-bottom:8px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+          <span style="font-weight:700; color:#fff; font-size:14px;">{{ $member->title }} {{ $member->name }} {{ $member->surname }}</span>
+          <span style="color:#fff; font-size:13px; margin-left:auto;">เกิด {{ $member->birthday }}</span>
         </div>
 
         {{-- ตาราง field --}}
@@ -75,8 +75,8 @@
         @endphp
 
         @foreach($rows as $i => [$label, $val])
-        <div style="display:flex; border-bottom:1px solid #FCEEF9; {{ $i%2==0 ? 'background:#FDF5FF;' : '' }}">
-          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#CC00CC; font-weight:600; font-size:13px;">{{ $label }}</div>
+        <div style="display:flex; border-bottom:1px solid #E2EEF8; {{ $i%2==0 ? 'background:#F5FAFF;' : '' }}">
+          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#003F87; font-weight:600; font-size:13px;">{{ $label }}</div>
           <div style="padding:5px 10px; font-size:13px; color:#1E293B; word-break:break-word; flex:1;">{{ $val ?: '-' }}</div>
         </div>
         @endforeach
@@ -85,8 +85,8 @@
         @php
           $actYears = ['act_65'=>65,'act_66'=>66,'act_67'=>67,'act_68'=>68,'act_69'=>69,'act_70'=>70,'act_71'=>71];
         @endphp
-        <div style="display:flex; border-bottom:1px solid #FCEEF9; background:#FDF5FF; align-items:center;">
-          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#CC00CC; font-weight:600; font-size:13px;">ร่วมงาน</div>
+        <div style="display:flex; border-bottom:1px solid #E2EEF8; background:#F5FAFF; align-items:center;">
+          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#003F87; font-weight:600; font-size:13px;">ร่วมงาน</div>
           <div style="padding:5px 10px; display:flex; gap:0;">
             @foreach($actYears as $field => $yr)
             @php
@@ -104,8 +104,8 @@
         </div>
 
         {{-- ม.ศ. / สมาชิก / ขนาดเสื้อ --}}
-        <div style="display:flex; border-bottom:1px solid #FCEEF9; align-items:center;">
-          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#CC00CC; font-weight:600; font-size:13px;">ม.ศ.</div>
+        <div style="display:flex; border-bottom:1px solid #E2EEF8; align-items:center;">
+          <div style="width:130px; flex-shrink:0; padding:5px 10px; color:#003F87; font-weight:600; font-size:13px;">ม.ศ.</div>
           <div style="padding:5px 10px; display:flex; gap:12px; font-size:13px; flex-wrap:wrap;">
             @foreach([1,2,3,4,5] as $n)
               <span>{{ $n }}/<strong>{{ $member->{'class'.$n} ?: '-' }}</strong></span>

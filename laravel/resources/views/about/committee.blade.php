@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'คณะกรรมการชมรม — ชมรมศิษย์เก่าสวนกุหลาบวิทยาลัย รุ่น 92(96)')
 
 @section('content')
@@ -15,10 +15,10 @@
     </p>
 
     {{-- คณะกรรมการดำเนินงาน --}}
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">คณะกรรมการดำเนินงาน</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">คณะกรรมการดำเนินงาน</h3>
     <table style="width:100%; border-collapse:collapse; font-size:13px; margin-bottom:20px;">
       <thead>
-        <tr style="background:#308EC4; color:#fff;">
+        <tr style="background:#38B8F5; color:#fff;">
           <th style="padding:7px 14px; text-align:left;">ชื่อ-สกุล</th>
           <th style="padding:7px 14px; text-align:left; width:200px;">ตำแหน่ง</th>
         </tr>
@@ -49,25 +49,25 @@
         ] as [$name, $pos])
         <tr style="border-bottom:1px solid #F1F5F9;">
           <td style="padding:5px 14px;">{{ $name }}</td>
-          <td style="padding:5px 14px; color:#308EC4; font-weight:600;">{{ $pos }}</td>
+          <td style="padding:5px 14px; color:#38B8F5; font-weight:600;">{{ $pos }}</td>
         </tr>
         @endforeach
       </tbody>
     </table>
 
     {{-- ผู้แทนห้อง OSK96 --}}
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">ผู้แทนห้อง OSK96</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">ผู้แทนห้อง OSK96</h3>
     <table style="width:100%; border-collapse:collapse; font-size:13px; margin-bottom:20px;">
       <tbody>
         <tr style="border-bottom:1px solid #F1F5F9;">
           <td style="padding:5px 14px;">นาย วิศาลท์ บูรณสันติกูล</td>
-          <td style="padding:5px 14px; color:#308EC4; font-weight:600;">ผู้แทนห้อง OSK96</td>
+          <td style="padding:5px 14px; color:#38B8F5; font-weight:600;">ผู้แทนห้อง OSK96</td>
         </tr>
       </tbody>
     </table>
 
     {{-- ที่ปรึกษากิตติมศักดิ์ --}}
-    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #308EC4; font-size:14px; color:#003366; margin:0 0 12px;">ที่ปรึกษากิตติมศักดิ์ และที่ปรึกษา</h3>
+    <h3 style="background:#EBF4FB; padding:8px 14px; border-left:4px solid #38B8F5; font-size:14px; color:#003366; margin:0 0 12px;">ที่ปรึกษากิตติมศักดิ์ และที่ปรึกษา</h3>
     <table style="width:100%; border-collapse:collapse; font-size:13px; margin-bottom:20px;">
       <tbody>
         @foreach([
