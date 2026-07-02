@@ -8,10 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    // Cache query results as JSON to avoid phpredis stdClass serialization issues
+    private function rememberQuery(string $key, int $ttl, callable $query)
+    {
+        $json = Cache::remember($key, $ttl, fn() => $query()->toJson());
+        return collect(json_decode($json));
+    }
+
     public function index()
     {
-        // Latest webboard posts — cache 5 min (เปลี่ยนบ่อย)
-        $latestPosts = Cache::remember('home.latest_posts', 300, fn() =>
+        $latestPosts = $this->rememberQuery('home.latest_posts', 300, fn() =>
             DB::table('webboard_question')
                 ->where('group_id', 1)
                 ->where('question_status', 1)
@@ -20,8 +26,7 @@ class HomeController extends Controller
                 ->get()
         );
 
-        // Recent topics — cache 5 min
-        $recentTopics = Cache::remember('home.recent_topics', 300, fn() =>
+        $recentTopics = $this->rememberQuery('home.recent_topics', 300, fn() =>
             DB::table('webboard_question')
                 ->join('webboard_group', function($join) {
                     $join->on('webboard_question.group_id', '=', 'webboard_group.group_id')
@@ -35,13 +40,12 @@ class HomeController extends Controller
                 ->get()
         );
 
-        // Random activity photos — cache 10 min (เปลี่ยนช้า)
         $activityPhotos = Cache::remember('home.activity_photos', 600, fn() =>
-            DB::table('photo')->inRandomOrder()->limit(10)->pluck('pic_name')
+            DB::table('photo')->inRandomOrder()->limit(10)->pluck('pic_name')->toJson()
         );
+        $activityPhotos = collect(json_decode($activityPhotos));
 
-        // Photo/clip posts — cache 5 min
-        $photoClips = Cache::remember('home.photo_clips', 300, fn() =>
+        $photoClips = $this->rememberQuery('home.photo_clips', 300, fn() =>
             DB::table('webboard_question')
                 ->where('group_id', 6)
                 ->where('question_status', 1)
@@ -50,12 +54,10 @@ class HomeController extends Controller
                 ->get()
         );
 
-        // Activities — cache 10 min
-        $activities = Cache::remember('home.activities', 600, fn() =>
+        $activities = $this->rememberQuery('home.activities', 600, fn() =>
             DB::table('activity')->orderByDesc('a_id')->limit(4)->get()
         );
 
-        // Visitor count — cache 1 min
         $visitorCount = Cache::remember('home.visitor_count', 60, fn() =>
             DB::table('counter')->where('countID', 1)->value('cont_num') ?? 0
         );

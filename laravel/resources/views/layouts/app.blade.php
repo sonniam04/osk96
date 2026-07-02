@@ -166,7 +166,7 @@
        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.45);
               z-index:9999; align-items:center; justify-content:center;">
     <div style="background:#BDD2F9; border:1px solid #FFCCFF; border-radius:10px;
-                width:320px; box-shadow:0 8px 32px rgba(0,0,0,.25); overflow:hidden;">
+                width:460px; box-shadow:0 8px 32px rgba(0,0,0,.25); overflow:hidden;">
 
       {{-- Header --}}
       <div style="background:#fff; padding:10px 16px; display:flex; align-items:center; justify-content:space-between;">
@@ -176,7 +176,7 @@
       </div>
 
       {{-- Form --}}
-      <form action="{{ route('login.post') }}" method="post" style="padding:20px 16px 16px;">
+      <form action="{{ route('login.post') }}" method="post" style="padding:20px 30px 16px;">
         @csrf
         @if(session('error'))
         <div style="color:#CC0000; font-size:12px; text-align:center; margin-bottom:10px;">
@@ -184,35 +184,33 @@
         </div>
         @endif
 
-        <table width="100%" cellspacing="0" cellpadding="4">
-          <tr>
-            <td style="text-align:right; font-size:13px; white-space:nowrap; padding-right:6px;">เลขประจำตัวนักเรียน :</td>
-            <td><input name="username" type="text" value="{{ old('username') }}"
-                       style="width:100%; border:1px solid #aaa; border-radius:4px; padding:5px 8px;
-                              font-family:'Sarabun',sans-serif; font-size:13px; box-sizing:border-box;"></td>
-          </tr>
-          <tr>
-            <td style="text-align:right; font-size:13px; white-space:nowrap; padding-right:6px;">รหัสผ่าน :</td>
-            <td><input name="password" type="password"
-                       style="width:100%; border:1px solid #aaa; border-radius:4px; padding:5px 8px;
-                              font-family:'Sarabun',sans-serif; font-size:13px; box-sizing:border-box;"></td>
-          </tr>
-          <tr>
-            <td colspan="2" style="text-align:center; padding-top:12px;">
-              <button type="submit"
-                      style="background:#308EC4; color:#fff; border:none; border-radius:5px;
-                             padding:7px 28px; font-family:'Sarabun',sans-serif; font-size:13px;
-                             font-weight:600; cursor:pointer;">
-                เข้าสู่ระบบ
-              </button>
-            </td>
-          </tr>
-        </table>
+        <div style="display:grid; grid-template-columns:auto 180px; gap:8px 8px;
+                    width:fit-content; margin:0 auto; align-items:center;">
+          <label style="font-size:13px; text-align:right; white-space:nowrap;">เลขประจำตัวนักเรียน :</label>
+          <input name="username" type="text" value="{{ old('username') }}"
+                 style="border:1px solid #aaa; border-radius:4px; padding:5px 8px;
+                        font-family:'Sarabun',sans-serif; font-size:13px; box-sizing:border-box;">
+          <label style="font-size:13px; text-align:right; white-space:nowrap;">รหัสผ่าน :</label>
+          <input name="password" type="password"
+                 style="border:1px solid #aaa; border-radius:4px; padding:5px 8px;
+                        font-family:'Sarabun',sans-serif; font-size:13px; box-sizing:border-box;">
+          <div style="grid-column:1/-1; text-align:center; padding-top:6px;">
+            <button type="submit"
+                    style="background:#308EC4; color:#fff; border:none; border-radius:5px;
+                           padding:7px 36px; font-family:'Sarabun',sans-serif; font-size:13px;
+                           font-weight:600; cursor:pointer;">
+              เข้าสู่ระบบ
+            </button>
+          </div>
+        </div>
       </form>
 
       {{-- Footer note --}}
-      <div style="background:#f0f4ff; padding:10px 14px; font-size:11px; color:#555; text-align:center; line-height:1.6;">
-        ติดต่อ <span style="color:#CC0000;">E-mail</span>
+      <div style="border:1px solid #bbb; margin:10px 14px; padding:10px 12px;
+                  font-size:12px; color:#333; text-align:center; line-height:1.8;">
+        เพื่อรักษาและป้องกันข้อมูลส่วนตัว ฉะนั้นเพื่อนท่านใดที่ต้องการสอบถามหรือแก้ไขข้อมูล<br>
+        กรุณาติดต่อตัวแทนหรือห้องต่อผ่านทางเว็บมาสเตอร์ผู้ดูแลระบบ OSK96
+        <span style="color:#CC0000;">E-mail</span>
         <a href="mailto:webmaster.osk@gmail.com" style="color:#308EC4;">webmaster.osk@gmail.com</a>
       </div>
     </div>
